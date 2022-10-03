@@ -13,10 +13,9 @@ main{
     margin-bottom: 40px;
 }
 .started{
-    background-color: #fff;
     text-decoration: none;
     padding: 15px;
-    color: #46CFBD;
+    /* color: #46CFBD; */
     font-size: 20px;
     font-weight: 700;
     border-radius: 50px;

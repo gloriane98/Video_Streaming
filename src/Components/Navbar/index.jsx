@@ -12,11 +12,11 @@ const Navbar = () => {
        
        <Link className="content" to='/'>
         <img src={icons} alt="logo" className='logo' />
-        <span className='title'>Smartview</span>
+        <span className='title'>SmartView</span>
        </Link>
         <div className='search-bar'>
             <input type="text" placeholder='Search' />
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button ><Link to='/searchpage'><i class="fa-solid fa-magnifying-glass"></i></Link></button>
         </div>
         <div className="avatar-bloc">
               

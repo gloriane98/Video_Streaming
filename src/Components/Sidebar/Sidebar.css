@@ -45,13 +45,13 @@ margin-bottom: -8px;}
     .sidecontainer{
         width: 100vw;
         bottom: 0;
-        height: 10vh;
+        height: 6vh;
         margin: 0;
         
     }
     .sidebarMenu{
         flex-direction: row;
-        margin-top: 25px;
+        margin-top: 15px;
 
     }
     .sidecontainer span{
