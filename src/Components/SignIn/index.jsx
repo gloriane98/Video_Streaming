@@ -4,8 +4,8 @@ import icons from '../../images/iconsAccueil.png'
 import {Link} from 'react-router-dom'
 import { GoogleLogin } from '@react-oauth/google'
 import jwt_decode from "jwt-decode"
-import { useGoogleLogin } from '@react-oauth/google'
-import axios from 'axios'
+/* import { useGoogleLogin } from '@react-oauth/google'
+import axios from 'axios' */
 
 
 const SignIn = () => {
