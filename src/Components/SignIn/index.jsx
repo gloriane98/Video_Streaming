@@ -12,7 +12,7 @@ const SignIn = () => {
     const start= () =>{
       gapi.client.init({
         clientId : clientId,
-        scope: ""
+        scope: "email"
       });
     }
     gapi.load('client: auth2', start);
@@ -26,7 +26,6 @@ const SignIn = () => {
   const onLogoutSuccess = () => {
   console.log('SUCESS LOG OUT');
 };
- 
   return (
     <>
      <main className='signcontainer'>

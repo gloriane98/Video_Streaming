@@ -12,14 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gapi-script": "^1.2.0",
+    "react-gapi-auth2": "^1.0.4",
     "react-google-login": "^5.2.2",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.4.1",
-    "styled-components": "^5.3.6"
+    "react-router-dom": "^6.4.1"
   },
   "devDependencies": {
-    "@iconify/react": "^4.0.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
