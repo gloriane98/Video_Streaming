@@ -2,21 +2,18 @@ main{
     height: 100vh;
     background-color: #46CFBD;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .signcontainer h1{
     color:#fff;
-    margin-top: -20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .started{
     text-decoration: none;
-    /* background-color: #fff; */
     padding: 15px;
-    /* color: #46CFBD; */
     font-size: 20px;
     font-weight: 700;
     border-radius: 50px;
