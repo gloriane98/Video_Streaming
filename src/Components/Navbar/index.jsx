@@ -16,7 +16,7 @@ const Navbar = () => {
        </Link>
         <div className='search-bar'>
             <input type="text" placeholder='Search' />
-            <button ><Link to='/searchpage'><i class="fa-solid fa-magnifying-glass"></i></Link></button>
+            <button ><Link to='/searchpage'><i className="fa-solid fa-magnifying-glass"></i></Link></button>
         </div>
         <div className="avatar-bloc">
               

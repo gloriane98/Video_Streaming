@@ -2,15 +2,14 @@ import React, { useState,useEffect } from 'react'
 import './VideoFav.css'
 import image from '../../images/images.png'
 import {Link} from 'react-router-dom'
-
+import { useContext } from 'react'
+import {UserContext} from "../../ContextAccount"
 
 
 const VideoFav = () => {
-const clef = "AIzaSyAZgkWdyx0qBoK4oJ9F2l-g124QSzhfP_s";
-const clef2 = "AIzaSyDbl5zERK3vAoEsZuEmxp2m70NvxmBlSig"
-const [users, setUsers] = useState({})
+const {userToken, setUserToken} = useContext(UserContext)
 const fetchSubcription = ()=>{
-  fetch(``)
+  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI', { method : 'GET',headers:new Headers({'Authorization': `Bearer ${userToken}`})})
   .then(response =>{
     return response.json()
   })
@@ -18,7 +17,7 @@ const fetchSubcription = ()=>{
     console.log(data)
   })
 }
-
+console.log(userToken);
 useEffect(()=>{
   fetchSubcription();
 },[])
