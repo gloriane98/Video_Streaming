@@ -1,8 +1,13 @@
-.logout-btn{
-    /* display: flex;
-    flex-direction: row;
+#btn-logout{
+    background-color: #fff;
+    color:#46CFBD;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor:pointer;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center; */
-    margin-top: 20px;
+    text-align: center;
 }
+

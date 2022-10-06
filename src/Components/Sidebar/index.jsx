@@ -21,25 +21,9 @@ const Sidebar = () => {
            <img src={icons} alt="icons subcription" />
            <span className='abonner'> Subscription</span>
            </Link>
-           <Link className="histories" to='/history'>
-           <i className="fa-solid fa-clock-rotate-left"></i>
-           <span className='history'> History</span>
-           </Link>
-           <Link className="libraries" to='/library'>
-           <img src={fluent} alt="icons library" />
-           <span className='library'>  Library</span>
-           </Link>
            <Link className="liked" to='/like'>
            <i className="fa-solid fa-thumbs-up"></i> 
            <span className='like'> Liked</span>
-           </Link>
-           <Link className="trend" to='/trending'>
-           <img src={trending} alt="icons Trending" />
-           <span className='trending'>Trending</span>
-           </Link>
-           <Link className="set" to='/setting'>
-           <i className="fa-solid fa-gear"></i> 
-           <span className='setting'>  Setting</span>
            </Link>
            <Logout/>
         </div>

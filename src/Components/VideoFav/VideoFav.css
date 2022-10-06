@@ -8,17 +8,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-
-
-
-  
 }
 .videocontainer a{
     text-decoration: none;
 }
 .card1{
     width: 26%;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 30px;
     height: 250px;  
     margin-bottom: 30px;
@@ -33,7 +29,7 @@
 }
 .item1{
     height: 90px;  
-    margin-top: -5px;
+    margin-top: -7px;
     background-color: #46CFBD;
 }
 .text {

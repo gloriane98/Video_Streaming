@@ -11,10 +11,12 @@ main{
     color:#fff;
     margin-bottom: 20px;
 }
-.started{
-    text-decoration: none;
+#started{
+    cursor:pointer;
+    background-color: #fff;
+    color:#46CFBD;
     padding: 15px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 700;
     border-radius: 50px;
 }

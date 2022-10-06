@@ -1,22 +1,21 @@
 import React from 'react'
 import Navbar from '../Navbar'
 import './Videoview.css'
-import {Link} from 'react-router-dom'
 import video from '../../images/view_video.png'
+import Sidebar from '../Sidebar'
 
 
 const Videoview = () => {
   return (
     <>
      <Navbar/>
+     <Sidebar/>
      <div className="vidvicontainer">
      <div className="vidvicontent">
      <div className="left">
       <img src={video} alt="video" />
     </div>
-        <div className="right">
-          
-        </div>
+        
      </div>
      </div>
     </>
