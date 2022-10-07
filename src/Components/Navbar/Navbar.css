@@ -99,15 +99,16 @@ nav {
         display: none;
     }
     .search-bar> button{
-        background-color:#46CFBD;
-        color: #fff;
+        background-color:#fff;
         font-size: 25px;
         margin: 0;
-        padding: 0;
+        padding: 5px;
+        border-radius: 50px;
+
     }
     .logo{
         height: 60px;
-        margin-left: -30px;
+        margin-left: -50px;
         padding-top: 10px;
        
     
@@ -121,7 +122,8 @@ nav {
     .bell{
         width:5%;
         padding-top: 25px;
-        margin-left: -30px;
+        margin-left: -50px;
+        margin-right: 0;
     }
     .avatar{
         display: none;

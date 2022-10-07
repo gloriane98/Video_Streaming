@@ -28,7 +28,7 @@ useEffect(() => {
   return (
     <>
       <div id="btn-logout" onClick={signOut}>Sign out with Google</div>
-      
+      {/* <i className="fa-brands fa-google"></i> */}
     </>
   )
 }
