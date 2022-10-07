@@ -10,16 +10,4 @@
     justify-content: center;
     text-align: center;
 }
-#btn-logout .fa-brands{
-    color: #46CFBD;
-    font-size: 14px;
-    padding-right: 10px;
-    padding-top: 2px;
-}
 
-@media screen and (max-width:450px) {
-    #btn-logout {
-        display: none;
-       
-    }
-}

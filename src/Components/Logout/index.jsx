@@ -5,7 +5,7 @@ import { gapi, loadAuth2 } from 'gapi-script'
 
 
 const Logout = () => {
-  const retour = useNavigate()
+  const nav = useNavigate()
   const clientId =
   '661962276208-2om69l5uusinqqej8ltkccv4q5jgg6hn.apps.googleusercontent.com'
   
@@ -21,14 +21,15 @@ useEffect(() => {
     const signOut = () => {
       const auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(() => {
-        retour('/')
+        nav('/signin')
         console.log('User signed out.');
+        window.localStorage.removeItem('token')
       });
     }
   return (
     <>
       <div id="btn-logout" onClick={signOut}>Sign out with Google</div>
-      {/* <i className="fa-brands fa-google"></i> */}
+      
     </>
   )
 }
