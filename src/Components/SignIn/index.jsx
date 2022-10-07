@@ -8,7 +8,7 @@ import { UserContext } from '../../ContextAccount'
 
 
 const SignIn = () => {
-  const {userToken,setUserToken}=useContext(UserContext);
+  // const {setUserToken}=useContext(UserContext)
   const clientId =
   '661962276208-2om69l5uusinqqej8ltkccv4q5jgg6hn.apps.googleusercontent.com'
 const navigate = useNavigate()
@@ -33,10 +33,9 @@ const attachSignin = (element, auth2) => {
   });
 };
 const updateUser= (user)=>{
-  // console.log(user.xc.access_token);
-  //localStorage.setItem('token',)
-  setUserToken(user.xc.access_token)
-  navigate('/details')
+// console.log(user);
+// setUserToken(user.xc.access_token)
+navigate('/dashbord')
 }
 
   return (

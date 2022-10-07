@@ -3,6 +3,7 @@ import './Navbar.css'
 import icons from '../../images/iconsNavbar.png'
 import avatar from '../../images/BMP04336-Modifier.jpg'
 import {Link} from 'react-router-dom'
+import Searchbar from '../Searchbar'
 
 
 const Navbar = () => {
@@ -14,10 +15,7 @@ const Navbar = () => {
         <img src={icons} alt="logo" className='logo' />
         <span className='title'>SmartView</span>
        </Link>
-        <div className='search-bar'>
-            <input type="text" placeholder='Search' />
-            <button ><Link to='/searchpage'><i className="fa-solid fa-magnifying-glass"></i></Link></button>
-        </div>
+        <Searchbar/>
         <div className="avatar-bloc">
               
         <div className="bell">
