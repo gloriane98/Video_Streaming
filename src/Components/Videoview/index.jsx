@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../Navbar'
 import './Videoview.css'
-import video from '../../images/view_video.png'
 import Sidebar from '../Sidebar'
 
 
@@ -13,7 +12,7 @@ const Videoview = () => {
      <div className="vidvicontainer">
      <div className="vidvicontent">
      <div className="left">
-      <img src={video} alt="video" />
+      <iframe src='' title="youtube video" allowFullScreen/>
     </div>
         
      </div>

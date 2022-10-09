@@ -21,7 +21,7 @@ useEffect(() => {
     const signOut = () => {
       const auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(() => {
-        nav('/signin')
+        nav('/')
         console.log('User signed out.');
         window.localStorage.removeItem('token')
       });

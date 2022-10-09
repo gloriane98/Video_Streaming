@@ -55,7 +55,7 @@ export default function App() {
       <Routes>
         {!userToken ? 
         
-        <Route path='/signin' element={<SignIn />}/>
+        <Route path='/' element={<SignIn />}/>
         :
        <>
       <Route path='/dashboard' element={<Dashboard/>}/>

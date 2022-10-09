@@ -38,9 +38,6 @@
     font-size: 30px;
 }
 
-/* .abonner{
-    padding-top: 10px;
-} */
 @media screen and (max-width: 450px) {
     .sidecontainer{
         width: 100vw;
@@ -59,7 +56,9 @@
     }
     .sidebarMenu img{
         /* display: none; */
-        margin-right: 20px;
+        margin-right: 30px;
+        margin-top: 4px;
+
 
     }
     .sidebarMenu i{

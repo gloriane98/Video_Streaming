@@ -38,7 +38,7 @@ const VideoLikes = () => {
             videos.items.map((video)=>{
             return(
 
-            <Link className="card1" to='/videoview'>
+            <Link className="card1" to='/videoview' key={id}>
                     <img src={video.snippet.thumbnails.medium.url} alt="" />
                     <div className="item1">
                     <div className="text">
