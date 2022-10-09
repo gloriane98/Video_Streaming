@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
      <nav>
        
-       <Link className="content" to='/'>
+       <Link className="content" to='/dashboard'>
         <img src={icons} alt="logo" className='logo' />
         <span className='title'>SmartView</span>
        </Link>

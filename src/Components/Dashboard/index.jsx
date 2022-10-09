@@ -2,14 +2,14 @@ import React from 'react'
 import './Dashboard.css'
 import Navbar from '../Navbar'
 import Sidebar from '../Sidebar'
-import VideoFav from '../VideoFav'
+import VideoPop from '../VideoPop'
 
 const Details = () => {
   return (
     <div className='detailscontainer'>
      <Navbar/>
       <Sidebar/>
-      <VideoFav/>
+      <VideoPop/>
     </div>
   )
 }

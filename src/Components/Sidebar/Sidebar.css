@@ -58,7 +58,9 @@
         display: none;
     }
     .sidebarMenu img{
-        display: none;
+        /* display: none; */
+        margin-right: 20px;
+
     }
     .sidebarMenu i{
         width: 15vw;

@@ -13,7 +13,7 @@ const Sidebar = () => {
     <>
       <div className="sidecontainer">
         <div className="sidebarMenu">
-           <Link className="home" to='/details'>
+           <Link className="home" to='/dashboard'>
            <i className="fa-solid fa-house"></i> 
            <span>Home</span>
            </Link>

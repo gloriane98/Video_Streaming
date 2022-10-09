@@ -7,6 +7,8 @@ import SearchPage from './Components/SearchPage';
 import { useState, useEffect} from 'react'
 import {UserContext} from  "./ContextAccount"
 import { gapi, loadAuth2 } from 'gapi-script'
+import VideoLikes from './Components/VideoLikes';
+import SubcribeVideo from './Components/SubcribeVideo';
 
 
 
@@ -40,7 +42,6 @@ export default function App() {
         });
       };
       const updateUser= (user)=>{
-        // console.log(user.xc.access_token);
         let token = window.localStorage.getItem('token')
         localStorage.setItem('token',user.xc.access_token)
         setUserToken(token)
@@ -60,6 +61,8 @@ export default function App() {
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/videoview' element={<Videoview/>}/>
       <Route path='/searchpage' element={<SearchPage/>}/>
+      <Route path='/like' element={<VideoLikes/>}/>
+      <Route path='/subcribe' element={<SubcribeVideo/>}/>
       </>
       }
       </Routes>

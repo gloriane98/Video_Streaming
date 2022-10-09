@@ -1,6 +1,6 @@
-.videocontainer{
+.Popcontainer{
     height: 100vh;
-    width: 79.8vw;
+    width: 78vw;
     margin-top: 70px;
     margin-left: 12%;
     display: flex;
@@ -8,12 +8,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-    /* border: 1px solid red; */
+    font-size: 12px;
 }
-.videocontainer a{
+.Popcontainer a{
     text-decoration: none;
 }
-.card1{
+.card{
     width: 26%;
     margin-left: 30px;
     margin-top: 30px;
@@ -22,22 +22,22 @@
 
 }
 
-.card1 > img{
+.card > img{
     object-fit: cover;
     width: 100%;
     height: 200px;  
 
 }
-.item1{
+.items{
     height: 90px;  
     margin-top: -7px;
     background-color: #46CFBD;
 }
 .text {
     color:#fff;
-    margin-left: 40px;
-    padding-top: 20px;
-    line-height: 30px;
+    margin-left: 20px;
+    padding-top: 10px;
+    line-height: 18px;
 }
 .timer{
     padding-left: 50px;
@@ -45,22 +45,24 @@
 
 @media screen and (max-width:450px) {
    
- .videocontainer{
+ .Popcontainer{
     margin: 0;
     display: grid;
     grid-template-columns: auto;
     width: 100vw;
     margin-top: 40px;
+    padding-bottom: 100px;
+
 
  }
- .card1{
-    /* margin: 0; */
-    margin-bottom: 0;
+ .card{ 
+    margin-top: 0;
+    margin-bottom: 8;
     padding: 0;
     width: 100vw;
  }
 
-.item1{
+.items{
     height: 120px;  
   
 }
