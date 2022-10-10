@@ -33,15 +33,14 @@
     margin-top: -7px;
     background-color: #46CFBD;
 }
-.text-bloc {
+/* .text-bloc {
     color:#fff;
-    /* margin-left: 20px; */
     padding-top: 10px;
     line-height: 18px;
 }
 .timer{
     padding-left: 50px;
-}
+} */
 
 @media screen and (max-width:450px) {
    

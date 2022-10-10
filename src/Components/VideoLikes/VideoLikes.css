@@ -55,15 +55,7 @@
     margin-top: -7px;
     background-color: #46CFBD;
 }
-.textes {
-    color:#fff;
-    margin-left: 20px;
-    padding-top: 10px;
-    line-height: 18px;
-}
-.timer{
-    padding-left: 50px;
-}
+
 
 @media screen and (max-width:450px) {
     .videocontainer{
@@ -94,35 +86,5 @@
         margin-top: 0;
         font-size: 18px;
     } 
- /*   
  
- .Popcontainer{
-    margin: 0;
-    display: grid;
-    grid-template-columns: auto;
-    width: 100vw;
-    margin-top: 40px;
-    padding-bottom: 100px;
-
-
- }
- .card{ 
-    margin-top: 0;
-    margin-bottom: 8;
-    padding: 0;
-    width: 100vw;
- }
-
-.items{
-    height: 120px;  
-  
-}
-.text{
-    line-height: 25px;
-    margin-top: 0;
-    font-size: 20px;
-}
-
-
-*/
 } 

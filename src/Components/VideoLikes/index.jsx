@@ -15,7 +15,7 @@ const VideoLikes = () => {
 
 
     const fetchVideoLikes = ()=>{
-    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=45&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=44&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
     .then(response =>{
         return response.json()
     })
@@ -44,8 +44,8 @@ const VideoLikes = () => {
                     <img src={video.snippet.thumbnails.medium.url} alt="" />
                     <div className="item1">
                     <div className="textes">
-                    <p className="title-video"> {video.snippet.channelTitle} </p>
-                    <p className="title-video"> {video.snippet.localized.title} </p>
+                    <p > {video.snippet.channelTitle} </p>
+                    <p > {video.snippet.localized.title} </p>
                     </div>
                     </div>
                 </Link>

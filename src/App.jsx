@@ -16,11 +16,11 @@ import ListVideoChannel from './Components/ListVideoChannel';
 
 export default function App() {
         const [loginState,setLoginState]=useState(false)
-        const [imgUrl, setImgUrl] = useState ("")
         const [userToken, setUserToken]= useState("")
-        
+
         const clientId =
         '661962276208-2om69l5uusinqqej8ltkccv4q5jgg6hn.apps.googleusercontent.com'
+
       const navigate = useNavigate()
       useEffect(() => {
         const setAuth2 = async () => {
@@ -45,35 +45,27 @@ export default function App() {
       const updateUser= (user)=>{
         let token = window.localStorage.getItem('token')
         localStorage.setItem('token',user.xc.access_token)
+
         const profileImg = user.getBasicProfile().getImageUrl();
-        console.log(profileImg);
+        localStorage.setItem('image',profileImg)
+       
+        
         setUserToken(token)
         navigate('/dashboard')
       }
- 
   return (
     <>
   
-    <UserContext.Provider value={{loginState,setLoginState,imgUrl,setImgUrl,userToken,setUserToken,attachSignin}}>
-   {/*    <Routes>
-        {!userToken ? 
-        
-        <Route path='/' element={<SignIn />}/>
-        :
-       <>
-         <Route path='/dashboard/' element={<Dashboard/>} />
-      </>
-      }
-      </Routes> */}
+    <UserContext.Provider value={{loginState,setLoginState,userToken,setUserToken,attachSignin}}>
       <Routes>
-       <Route path='/' element={<SignIn />}/>
-       <Route path='/dashboard/' element={<Dashboard/>} />
-       <Route path='/videoview/:videoId' element={<Videoview/>}/>
-       <Route path='/searchpage/' element={<SearchPage/>}/>
-       <Route path='/like/' element={<VideoLikes/>}/>
-       <Route path='/subcribe' element={<SubcribeVideo/>}/>
-       <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
-      </Routes>
+          <Route path='/' element={<SignIn />}/>
+          <Route path='/dashboard/' element={<Dashboard/>} />
+          <Route path='/videoview/:videoId' element={<Videoview/>}/>
+          <Route path='/searchpage/' element={<SearchPage/>}/>
+          <Route path='/like/' element={<VideoLikes/>}/>
+          <Route path='/subcribe' element={<SubcribeVideo/>}/>
+          <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
+          </Routes>
     </UserContext.Provider> 
     </>
   )

@@ -1,14 +1,14 @@
 import React from 'react'
 import './Navbar.css'
 import icons from '../../images/iconsNavbar.png'
-import avatar from '../../images/BMP04336-Modifier.jpg'
 import {Link} from 'react-router-dom'
 import Searchbar from '../Searchbar'
 
 
 
-const Navbar = () => {
 
+const Navbar = () => {
+  let userImg=window.localStorage.getItem('image')
   return (
     <>
      <nav>
@@ -24,7 +24,7 @@ const Navbar = () => {
               <span><i className="fa-solid fa-bell "></i></span>
               </div>
             <div className="avatar">
-              <img src={avatar} alt="user" className='avatar-user' />
+              <img src={userImg} alt="user" className='avatar-user' />
             </div>
         </div>
    

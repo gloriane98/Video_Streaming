@@ -34,12 +34,12 @@ return (
     video.items.map((video)=>{
       return(
 
-     <Link className="card" to={`/videoview/${video.id}`}>
+     <Link key={video.id} className="card" to={`/videoview/${video.id}`}>
             <img src={video.snippet.thumbnails.medium.url} alt="" />
               <div className="items">
                <div className="text-bloc">
-               <p className="title-video"> {video.snippet.channelTitle} </p>
-               <p className="title-video"> {video.snippet.localized.title} </p>
+               <p > {video.snippet.channelTitle} </p>
+               <p > {video.snippet.localized.title} </p>
                </div>
               </div>
           </Link>
