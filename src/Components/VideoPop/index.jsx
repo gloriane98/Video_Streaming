@@ -7,11 +7,13 @@ import Loader from '../Loader'
 
 
 const VideoPop = () => {
+
 const [video, setVideo] = useState([])
 const {userToken, setUserToken} = useContext(UserContext)
 const [loading,setLoading]=useState(true)
+
 const fecthVideoPopular = ()=>{
-  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=32&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
   .then(response =>{
     return response.json()
   })
@@ -20,39 +22,22 @@ const fecthVideoPopular = ()=>{
     setLoading(false)
   })
 }
-console.log(userToken);
 useEffect(()=>{
   fecthVideoPopular();
 },[])
-// console.log(video.items);
-  return (
-    <>
-    {/* <div className="videocontainer">
 
-     <Link className="card1" to='/videoview'>
-            <img src="" alt="" />
-              <div className="item1">
-               <div className="text">
-               <p className="title-video">
-              </p>
-                  <p className="number-vue">  <span className="timer"></span> </p>
-               </div>
-              </div>
-          </Link>
-    </div> */}
-    
-  
-  
+return (
+    <>
  <div className="Popcontainer">
   {
     !loading ?
     video.items.map((video)=>{
       return(
 
-     <Link className="card" to='/videoview'>
+     <Link className="card" to={`/videoview/${video.id}`}>
             <img src={video.snippet.thumbnails.medium.url} alt="" />
               <div className="items">
-               <div className="text">
+               <div className="text-bloc">
                <p className="title-video"> {video.snippet.channelTitle} </p>
                <p className="title-video"> {video.snippet.localized.title} </p>
                </div>
@@ -62,11 +47,6 @@ useEffect(()=>{
           
         }):<Loader/>} 
     </div> 
-    
-    
-    
-   
-    
     </>
   )
 }

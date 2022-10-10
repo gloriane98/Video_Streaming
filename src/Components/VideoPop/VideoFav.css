@@ -33,9 +33,9 @@
     margin-top: -7px;
     background-color: #46CFBD;
 }
-.text {
+.text-bloc {
     color:#fff;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     padding-top: 10px;
     line-height: 18px;
 }

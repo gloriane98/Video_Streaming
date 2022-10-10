@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import "./SubcribeVideo.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../ContextAccount";
 import Loader from "../Loader";
@@ -9,14 +9,13 @@ import Sidebar from "../Sidebar";
 
 
 const SubcribeVideo = () => {
-  
     const [subcribe, setSubcribe] = useState([])
     const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
     
   
     const fetchVideoSubcribe = ()=>{
-    fetch('https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCCab9t43yIzIgdAM9FWpdRw&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+    fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails&maxResults=21&mine=true&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
     .then(response =>{
         return response.json()
     })
@@ -25,13 +24,13 @@ const SubcribeVideo = () => {
         setLoading(false)
     })
     }
-    console.log(userToken);
-    console.log(userToken);
+  
     useEffect(()=>{
     fetchVideoSubcribe();
     },[])
     console.log(subcribe.items);
-  return <>
+
+return <>
         <Navbar/>
         <Sidebar/>
         
@@ -39,17 +38,18 @@ const SubcribeVideo = () => {
   {
     !loading ?
     subcribe.items.map((video)=>{
+      const videoItem=video.snippet.resourceId.channelId;
       return(
-
-     <div className="cards" >
-            <img src={video.snippet.thumbnails.default.url} alt="" />
+        
+     <Link key={video.videoId} className="cards" to={`/listvideochannel/${videoItem}`} >
+            <img src={video.snippet.thumbnails.medium.url} alt="youtube chaine" />
               <div className="bloc-text">
-               <div className="text">
-               <p className="title-video"> </p>
-               <p className="title-video"> </p>
+               <div className="">
+               <p className="">{video.snippet.title}</p>
+               {/* <p className="title-video"> </p> */}
                </div>
               </div>
-          </div>
+          </Link>
           )
           
         }):<Loader/>} 

@@ -9,6 +9,7 @@ import {UserContext} from  "./ContextAccount"
 import { gapi, loadAuth2 } from 'gapi-script'
 import VideoLikes from './Components/VideoLikes';
 import SubcribeVideo from './Components/SubcribeVideo';
+import ListVideoChannel from './Components/ListVideoChannel';
 
 
 
@@ -58,11 +59,12 @@ export default function App() {
         <Route path='/' element={<SignIn />}/>
         :
        <>
-      <Route path='/dashboard' element={<Dashboard/>}/>
-      <Route path='/videoview' element={<Videoview/>}/>
-      <Route path='/searchpage' element={<SearchPage/>}/>
-      <Route path='/like' element={<VideoLikes/>}/>
+      <Route path='/dashboard/' element={<Dashboard/>} />
+      <Route path='/videoview/:videoId' element={<Videoview/>}/>
+      <Route path='/searchpage/' element={<SearchPage/>}/>
+      <Route path='/like/' element={<VideoLikes/>}/>
       <Route path='/subcribe' element={<SubcribeVideo/>}/>
+      <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
       </>
       }
       </Routes>

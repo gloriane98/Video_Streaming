@@ -5,12 +5,15 @@ import Sidebar from '../Sidebar'
 import {Link} from 'react-router-dom'
 import { useContext } from 'react'
 import {UserContext} from "../../ContextAccount"
+
 import Loader from '../Loader'
 
 const VideoLikes = () => {
     const [videos, setVideo] = useState([])
     const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
+
+
     const fetchVideoLikes = ()=>{
     fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=45&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
     .then(response =>{
@@ -21,12 +24,11 @@ const VideoLikes = () => {
         setLoading(false)
     })
     }
-    console.log(userToken);
-    console.log(userToken);
+    
     useEffect(()=>{
     fetchVideoLikes();
     },[])
-    // console.log(videos.items);
+    console.log(videos.items);
   return (
     <>
       <Navbar/>
@@ -38,10 +40,10 @@ const VideoLikes = () => {
             videos.items.map((video)=>{
             return(
 
-            <Link className="card1" to='/videoview' key={id}>
+            <Link className="card1" to={`/videoview/${video.id}`} >
                     <img src={video.snippet.thumbnails.medium.url} alt="" />
                     <div className="item1">
-                    <div className="text">
+                    <div className="textes">
                     <p className="title-video"> {video.snippet.channelTitle} </p>
                     <p className="title-video"> {video.snippet.localized.title} </p>
                     </div>
