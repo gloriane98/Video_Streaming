@@ -1,6 +1,6 @@
 import './App.css'
 import SignIn from './Components/SignIn';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route, useNavigate,Router} from 'react-router-dom';
 import Dashboard from './Components/Dashboard'
 import Videoview from './Components/Videoview';
 import SearchPage from './Components/SearchPage';
@@ -45,6 +45,8 @@ export default function App() {
       const updateUser= (user)=>{
         let token = window.localStorage.getItem('token')
         localStorage.setItem('token',user.xc.access_token)
+        const profileImg = user.getBasicProfile().getImageUrl();
+        console.log(profileImg);
         setUserToken(token)
         navigate('/dashboard')
       }
@@ -53,20 +55,24 @@ export default function App() {
     <>
   
     <UserContext.Provider value={{loginState,setLoginState,imgUrl,setImgUrl,userToken,setUserToken,attachSignin}}>
-      <Routes>
+   {/*    <Routes>
         {!userToken ? 
         
         <Route path='/' element={<SignIn />}/>
         :
        <>
-      <Route path='/dashboard/' element={<Dashboard/>} />
-      <Route path='/videoview/:videoId' element={<Videoview/>}/>
-      <Route path='/searchpage/' element={<SearchPage/>}/>
-      <Route path='/like/' element={<VideoLikes/>}/>
-      <Route path='/subcribe' element={<SubcribeVideo/>}/>
-      <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
+         <Route path='/dashboard/' element={<Dashboard/>} />
       </>
       }
+      </Routes> */}
+      <Routes>
+       <Route path='/' element={<SignIn />}/>
+       <Route path='/dashboard/' element={<Dashboard/>} />
+       <Route path='/videoview/:videoId' element={<Videoview/>}/>
+       <Route path='/searchpage/' element={<SearchPage/>}/>
+       <Route path='/like/' element={<VideoLikes/>}/>
+       <Route path='/subcribe' element={<SubcribeVideo/>}/>
+       <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
       </Routes>
     </UserContext.Provider> 
     </>

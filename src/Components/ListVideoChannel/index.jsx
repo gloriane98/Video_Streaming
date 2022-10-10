@@ -28,7 +28,7 @@ const ListVideoChannel = () => {
     if(isError){
         return( <div>not found</div>)
     }
-console.log(videoChannel)
+    
   return (
     <>
     <Navbar/>

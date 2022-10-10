@@ -23,7 +23,7 @@ const Sidebar = () => {
            </Link>
            <Link className="liked" to='/like'>
            <i className="fa-solid fa-thumbs-up"></i> 
-           <span className='like'> Liked</span>
+           <span className='like'> Likes</span>
            </Link>
            <Logout/>
         </div>

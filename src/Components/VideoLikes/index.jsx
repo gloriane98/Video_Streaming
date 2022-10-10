@@ -28,8 +28,8 @@ const VideoLikes = () => {
     useEffect(()=>{
     fetchVideoLikes();
     },[])
-    console.log(videos.items);
-  return (
+
+    return (
     <>
       <Navbar/>
       <Sidebar/>

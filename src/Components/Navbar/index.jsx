@@ -6,7 +6,9 @@ import {Link} from 'react-router-dom'
 import Searchbar from '../Searchbar'
 
 
+
 const Navbar = () => {
+
   return (
     <>
      <nav>

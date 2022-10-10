@@ -28,8 +28,8 @@ const SubcribeVideo = () => {
     useEffect(()=>{
     fetchVideoSubcribe();
     },[])
-    console.log(subcribe.items);
 
+    
 return <>
         <Navbar/>
         <Sidebar/>
