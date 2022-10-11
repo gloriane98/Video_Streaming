@@ -24,14 +24,14 @@ const fecthVideoPopular = ()=>{
 }
 useEffect(()=>{
   fecthVideoPopular();
-},[])
+},[userToken])
 
 return (
     <>
  <div className="Popcontainer">
   {
     !loading ?
-    video.items.map((video)=>{
+    video.items?.map((video)=>{
       return(
 
      <Link key={video.id} className="card" to={`/videoview/${video.id}`}>

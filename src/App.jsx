@@ -24,7 +24,7 @@ export default function App() {
       const navigate = useNavigate()
       useEffect(() => {
         const setAuth2 = async () => {
-          const auth2 = await loadAuth2(gapi, clientId, 'https://www.googleapis.com/auth/youtube.force-ssl')
+          const auth2 = await loadAuth2(gapi, clientId, 'https://www.googleapis.com/auth/youtube')
           if (auth2.isSignedIn.get()) {
               updateUser(auth2.currentUser.get())
       
@@ -43,15 +43,18 @@ export default function App() {
         });
       };
       const updateUser= (user)=>{
+        console.log(user);
         let token = window.localStorage.getItem('token')
+        console.log(token);
+
         localStorage.setItem('token',user.xc.access_token)
+        setUserToken(token)
+        navigate('/dashboard')
 
         const profileImg = user.getBasicProfile().getImageUrl();
         localStorage.setItem('image',profileImg)
        
-        
-        setUserToken(token)
-        navigate('/dashboard')
+    
       }
   return (
     <>

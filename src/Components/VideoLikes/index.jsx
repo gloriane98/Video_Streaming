@@ -27,7 +27,7 @@ const VideoLikes = () => {
     
     useEffect(()=>{
     fetchVideoLikes();
-    },[])
+    },[userToken])
 
     return (
     <>
@@ -37,10 +37,10 @@ const VideoLikes = () => {
                 <div className="videocontainer">
         {
             !loading ?
-            videos.items.map((video)=>{
+            videos.items?.map((video)=>{
             return(
 
-            <Link className="card1" to={`/videoview/${video.id}`} >
+            <Link key={video.id} className="card1" to={`/videoview/${video.id}`} >
                     <img src={video.snippet.thumbnails.medium.url} alt="" />
                     <div className="item1">
                     <div className="textes">
