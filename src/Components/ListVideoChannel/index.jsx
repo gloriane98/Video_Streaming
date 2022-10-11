@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../CardElements.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -33,18 +34,23 @@ const ListVideoChannel = () => {
     <>
     <Navbar/>
     <Sidebar/>
-    <div className="recommendedvideos">
+    <div>
       {isLoading ? (
         <div >
           <Loader/>
         </div>
       ) : null}
-      <div>
+      <div  className="videocontainer">
         {videoChannel.map((video,index) => {
             const videoId=video.id.videoId;
           return (
-            <Link key={index} to={`/videoview/${videoId}`}>
-              <div><img src={video.snippet.thumbnails.medium.url}  alt="" /> </div>
+            <Link key={index} className="cards" to={`/videoview/${videoId}`}>
+                <img src={video.snippet.thumbnails.medium.url}  alt="" />
+                  <div className="items">
+                      <div className="texte">
+                          <p >{video.snippet.title}</p>
+                      </div>
+                  </div>
             </Link>
           );
         })}

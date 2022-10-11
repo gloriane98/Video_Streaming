@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
-import "./SubcribeVideo.css";
 import { Link, useParams } from "react-router-dom";
+import '../../CardElements.css'
 import { useContext } from "react";
 import { UserContext } from "../../ContextAccount";
 import Loader from "../Loader";
@@ -29,12 +29,12 @@ const SubcribeVideo = () => {
     fetchVideoSubcribe();
     },[userToken])
 
-    console.log(userToken);
+
 return <>
         <Navbar/>
         <Sidebar/>
         
-    <div className="subcribecontainer">
+    <div className="videocontainer">
   {
     !loading ?
     subcribe.items?.map((video)=>{
@@ -43,12 +43,13 @@ return <>
         
      <Link key={video.id} className="cards" to={`/listvideochannel/${videoItem}`} >
             <img src={video.snippet.thumbnails.medium.url} alt="youtube chaine" />
-              <div className="bloc-text">
-               <div className="">
-               <p className="">{video.snippet.title}</p>
-               {/* <p className="title-video"> </p> */}
-               </div>
-              </div>
+                <div className="items">
+                  <div className="texte">
+                    <p >{video.snippet.title}</p>
+                    <p >{video.snippet.publishedAt}</p>
+                    <p>{video.contentDetails.totalItemCount}</p>
+                  </div>
+                </div>
           </Link>
           )
           

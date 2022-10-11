@@ -37,7 +37,6 @@
     color:#fff;
     font-size: 30px;
 }
-
 @media screen and (max-width: 450px) {
     .sidecontainer{
         width: 100vw;
@@ -55,7 +54,6 @@
         display: none;
     }
     .sidebarMenu img{
-        /* display: none; */
         margin-right: 30px;
         margin-top: 4px;
 

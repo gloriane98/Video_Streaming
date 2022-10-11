@@ -20,7 +20,7 @@ const SearchPage = (props) => {
         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=channel&q=${searchQuery}&safeSearch=none&key=AIzaSyAxYTdTGDlgbCAqKpQhTrVlpCN4l3Eyl0I`
       )
       .then((response) => {
-        console.log(response.data.items);
+        // console.log(response.data.items);
 
       });
 
@@ -29,7 +29,7 @@ const SearchPage = (props) => {
         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyAxYTdTGDlgbCAqKpQhTrVlpCN4l3Eyl0I`
       )
       .then((response) => {
-        console.log(response.data.items);
+        // console.log(response.data.items);
         setIsError(false);
       })
       .catch((error) => {

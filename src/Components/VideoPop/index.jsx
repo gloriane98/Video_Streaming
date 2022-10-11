@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import './VideoFav.css'
+import '../../CardElements.css'
 import {Link} from 'react-router-dom'
 import { useContext } from 'react'
 import {UserContext} from "../../ContextAccount"
@@ -28,25 +28,27 @@ useEffect(()=>{
 
 return (
     <>
- <div className="Popcontainer">
+    <div className='main'>
+ <div className="videocontainer">
   {
     !loading ?
     video.items?.map((video)=>{
       return(
 
-     <Link key={video.id} className="card" to={`/videoview/${video.id}`}>
+     <Link key={video.id} className="cards" to={`/videoview/${video.id}`}>
             <img src={video.snippet.thumbnails.medium.url} alt="" />
-              <div className="items">
-               <div className="text-bloc">
-               <p > {video.snippet.channelTitle} </p>
-               <p > {video.snippet.localized.title} </p>
-               </div>
-              </div>
+                <div className="items">
+                  <div className="texte">
+                    <p > {video.snippet.channelTitle} </p>
+                    <p > {video.snippet.localized.title} </p>
+                  </div>
+                </div>
           </Link>
           )
           
         }):<Loader/>} 
     </div> 
+    </div>
     </>
   )
 }
