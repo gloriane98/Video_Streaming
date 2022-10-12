@@ -5,6 +5,8 @@ import Sidebar from '../Sidebar'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 import Loader from '../Loader'
+import ListVideoChannel from '../ListVideoChannel'
+import VideoLikes from '../VideoLikes'
 
 
 
@@ -19,12 +21,9 @@ const Videoview = () => {
      <Navbar/>
      <Sidebar/>
      <div className="vidvicontainer">
-     <div className="vidvicontent">
-     <div className="left">
-        <IframeVideo videoId={videoId}/>
-    </div>
-        
-     </div>
+        <div className="vidvicontent">
+                <IframeVideo videoId={videoId} />
+        </div>
      </div>
     </>
   )

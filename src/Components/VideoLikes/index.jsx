@@ -10,12 +10,13 @@ import Loader from '../Loader'
 
 const VideoLikes = () => {
     const [videos, setVideo] = useState([])
-    const {userToken, setUserToken} = useContext(UserContext)
+    // const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
+    const {token} = useContext(UserContext)
 
 
     const fetchVideoLikes = ()=>{
-    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=44&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=44&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+token)
     .then(response =>{
         return response.json()
     })
@@ -27,7 +28,7 @@ const VideoLikes = () => {
     
     useEffect(()=>{
     fetchVideoLikes();
-    },[userToken])
+    },[token])
 
     return (
     <>

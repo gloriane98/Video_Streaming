@@ -1,6 +1,6 @@
 import './App.css'
 import SignIn from './Components/SignIn';
-import {Routes, Route, useNavigate,Router} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import Dashboard from './Components/Dashboard'
 import Videoview from './Components/Videoview';
 import SearchPage from './Components/SearchPage';
@@ -17,6 +17,7 @@ import ListVideoChannel from './Components/ListVideoChannel';
 export default function App() {
         const [loginState,setLoginState]=useState(false)
         const [userToken, setUserToken]= useState("")
+        let token = window.localStorage.getItem('token')
 
         const clientId =
         '661962276208-2om69l5uusinqqej8ltkccv4q5jgg6hn.apps.googleusercontent.com'
@@ -35,16 +36,19 @@ export default function App() {
         setAuth2();
       }, []);
       const attachSignin = (element, auth2) => {
-        auth2.attachClickHandler(element, {},
+        auth2.attachClickHandler(
+          element,
+          {},
           (googleUser) => {
             updateUser(googleUser);
-          }, (error) => {
-          console.log(JSON.stringify(error))
-        });
+          },
+          (error) => {
+            console.log(JSON.stringify(error));
+          }
+        );
       };
       const updateUser= (user)=>{
         console.log(user);
-        let token = window.localStorage.getItem('token')
         console.log(token);
 
         localStorage.setItem('token',user.xc.access_token)
@@ -59,7 +63,7 @@ export default function App() {
   return (
     <>
   
-    <UserContext.Provider value={{loginState,setLoginState,userToken,setUserToken,attachSignin}}>
+    <UserContext.Provider value={{loginState,setLoginState,userToken,setUserToken,attachSignin,token}}>
       <Routes>
           <Route path='/' element={<SignIn />}/>
           <Route path='/dashboard/' element={<Dashboard/>} />

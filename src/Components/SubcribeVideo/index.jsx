@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../../CardElements.css'
 import { useContext } from "react";
 import { UserContext } from "../../ContextAccount";
@@ -10,12 +10,12 @@ import Sidebar from "../Sidebar";
 
 const SubcribeVideo = () => {
     const [subcribe, setSubcribe] = useState([])
-    const {userToken, setUserToken} = useContext(UserContext)
+    // const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
-   
-  
+    const {token} = useContext(UserContext)
+
     const fetchVideoSubcribe = ()=>{
-    fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails&maxResults=21&mine=true&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+    fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails&maxResults=21&mine=true&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+token)
     .then(response =>{
         return response.json()
     })
@@ -27,7 +27,7 @@ const SubcribeVideo = () => {
   
     useEffect(()=>{
     fetchVideoSubcribe();
-    },[userToken])
+    },[token])
 
 
 return <>
