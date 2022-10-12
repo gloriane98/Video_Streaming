@@ -4,9 +4,6 @@ import './Videoview.css'
 import Sidebar from '../Sidebar'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
-import Loader from '../Loader'
-import ListVideoChannel from '../ListVideoChannel'
-import VideoLikes from '../VideoLikes'
 
 
 

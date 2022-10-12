@@ -1,0 +1,19 @@
+{
+    "redirects": [
+      {
+        "source": "/subcribe",
+        "destination": "/index.html",
+        "permanent": true
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/index.html",
+        "permanent": true
+      },
+      {
+        "source": "/listvideochannel",
+        "destination": "/index.html",
+        "permanent": true
+      }
+    ]
+    }
