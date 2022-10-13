@@ -19,16 +19,17 @@
     
     
 }
-.search-bar> button{
+ button{
     border: none;
     padding-right: 10px;
     padding-left: 10px;
+    height: 30px;
     background-color: #fff ;
     border-radius: 0 40px 40px 0;
 }
-.search-bar > button > a {
+ i{
     color: #46CFBD;
-}
+} 
 ::placeholder{
     color:#fff;
     font-weight: 500;

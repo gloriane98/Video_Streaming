@@ -9,11 +9,13 @@ import Loader from '../Loader'
 const VideoPop = () => {
 
 const [video, setVideo] = useState([])
-const {userToken, setUserToken} = useContext(UserContext)
+// const {userToken, setUserToken} = useContext(UserContext)
 const [loading,setLoading]=useState(true)
+const {token} = useContext(UserContext)
+
 
 const fecthVideoPopular = ()=>{
-  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+userToken)
+  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+token)
   .then(response =>{
     return response.json()
   })
@@ -24,7 +26,7 @@ const fecthVideoPopular = ()=>{
 }
 useEffect(()=>{
   fecthVideoPopular();
-},[userToken])
+},[token])
 
 return (
     <>
