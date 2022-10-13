@@ -10,9 +10,8 @@ import Sidebar from "../Sidebar";
 
 const SubcribeVideo = () => {
     const [subcribe, setSubcribe] = useState([])
-    // const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
-    const {token} = useContext(UserContext)
+    let token = window.localStorage.getItem('token')
     console.log(token);
 
     const fetchVideoSubcribe = ()=>{

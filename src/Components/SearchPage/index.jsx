@@ -4,51 +4,46 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 
 
-const SearchPage = (props) => {
+const SearchPage = () => {
   let { searchQuery } = useParams();
-
-  const [channelRow, setChannelRow] = useState("");
+  console.log(searchQuery)
   const [videoRows, setVideoRows] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
 
   const fectData= ()=>{
     axios
     .get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=channel&q=${searchQuery}&safeSearch=none&key=AIzaSyAxYTdTGDlgbCAqKpQhTrVlpCN4l3Eyl0I`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`
     )
     .then((response) => {
-      // console.log(response.data.items);
-      localStorage.setItem('searchData',response.data.items)
-
-    });
-
-  /* axios
-    .get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyAxYTdTGDlgbCAqKpQhTrVlpCN4l3Eyl0I`
-    )
-    .then((response) => {
-      // console.log(response.data.items);
-      setIsError(false);
+     console.log(response);
+     setVideoRows(response)
     })
-    .catch((error) => {
-      console.log(error);
-      setIsError(true);
-      setIsLoading(false);
-    });
-    */
+    .catch((error)=>(console.log(error)))
+
   }
  
   useEffect(() => {
-    setChannelRow("");
-    setVideoRows([]);
+   fectData();
   
-  }, [searchQuery]);
+  }, []);
 
 
   return (
     <>
       <Navbar/>
+     <div className="videoSeacrh">
+     {videoRows.map((items)=>{
+      const videoId=items.id.videoId;
+        return (
+         <div className="videoRow">
+           <Link to={`/videoview/${videoId}`}>
+            <img src="" alt="" />
+            <p></p>
+            </Link>
+         </div>
+        )
+      })}
+     </div>
 
     </>
   )

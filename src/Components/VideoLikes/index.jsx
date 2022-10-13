@@ -12,7 +12,8 @@ const VideoLikes = () => {
     const [videos, setVideo] = useState([])
     // const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
-    const {token} = useContext(UserContext)
+    let token = window.localStorage.getItem('token')
+
 
 
     const fetchVideoLikes = ()=>{
