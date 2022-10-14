@@ -14,10 +14,11 @@ const Logout = () => {
   const NavigateSignIn= ()=>{
     if (loginState) {
       signOut(auth);
-      localStorage.removeItem('image')
-      localStorage.removeItem('token')
+     
     } else {
       navigate("/");
+      localStorage.removeItem('image')
+      localStorage.removeItem('token')
     }
   }
 
