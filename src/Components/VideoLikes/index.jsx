@@ -17,7 +17,7 @@ const VideoLikes = () => {
 
 
     const fetchVideoLikes = ()=>{
-    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=44&myRating=like&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk&access_token='+token)
+    fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails&maxResults=44&myRating=like&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token='+token)
     .then(response =>{
         return response.json()
     })

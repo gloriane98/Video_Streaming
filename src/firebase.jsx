@@ -1,5 +1,6 @@
-
-import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat/app'
+import "firebase/compat/auth"
+// import { initializeApp } from "firebase/app";
 import {getAuth,GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
 const firebaseConfig = {
@@ -11,19 +12,21 @@ const firebaseConfig = {
   appId: "1:661962276208:web:36718484f9ca40892d63b5"
 };
 
+firebase.initializeApp(firebaseConfig)
  
 export const app = initializeApp(firebaseConfig);
 
-export const auth= getAuth(app) 
-export const provider = new GoogleAuthProvider();
+// export const auth= getAuth(app) 
+export const provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
 
 export const signInWithGoogle= ()=>{
-    signInWithPopup(auth,provider).then((result)=>{
-        console.log(result);
-        console.log(result.user.photoURL)
+    signInWithPopup(provider).then((result)=>{
+       console.log(result)
         localStorage.setItem('image',result.user.photoURL)
         localStorage.setItem('token', result.user.accessToken)
-        console.log(result.user.accessToken);
+       
     }).catch(error => console.log(error))
 }
 
+export default firebase.auth();

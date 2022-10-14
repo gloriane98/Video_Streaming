@@ -9,8 +9,9 @@ import {UserContext} from  "./ContextAccount"
 import VideoLikes from './Components/VideoLikes';
 import SubcribeVideo from './Components/SubcribeVideo';
 import ListVideoChannel from './Components/ListVideoChannel';
-import {signInWithGoogle,auth} from '../src/firebase'
+import {signInWithGoogle} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
+import auth from './firebase'
 
 
 

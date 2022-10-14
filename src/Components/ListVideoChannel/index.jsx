@@ -16,7 +16,7 @@ const ListVideoChannel = () => {
     const [isError,setIsError]=useState(false)
 
     useEffect(()=>{
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=21&key=AIzaSyBD5CK_R6LCQmiLLxTu9oxCjs96rKTBxfk`)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=21&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`)
         .then(response =>{
             return response.json()
         })
