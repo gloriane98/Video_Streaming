@@ -4,7 +4,6 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import Loader from '../Loader'
 
-
 const SearchPage = () => {
   let { searchQuery } = useParams();
   console.log(searchQuery)
@@ -13,7 +12,7 @@ const SearchPage = () => {
   const fectData= ()=>{
     axios
     .get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`
     )
     .then((response) => {
     console.log(response.data.items)
@@ -33,17 +32,22 @@ const SearchPage = () => {
   return (
     <>
       <Navbar/>
-     <div className="videoSeacrh">
+     <div className="videocontainer">
      {
        !loader ?
        videoRows?.map((item)=>{
       const videoId=item.id.videoId;
         return (
-         <div className="videoRow">
-           <Link to={`/videoview/${videoId}`}>
+         <div>
+           <Link to={`/videoview/${videoId}`}  className="cards">
             <img src={item.snippet.thumbnails.medium.url} alt="" />
-            <p>{item.snippet.channelTitle}</p>
-             <p>{item.snippet.title}</p>
+            <div className='items'>
+                <div className='texte'>
+                  <p>{item.snippet.channelTitle}</p>
+                   <p>{item.snippet.title}</p>
+                </div>
+            </div>
+            
             </Link>
          </div>
         )
