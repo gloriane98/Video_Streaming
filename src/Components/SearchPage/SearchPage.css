@@ -1,0 +1,40 @@
+.videoSearch{
+  padding-left:10%;
+  padding-top:80px;
+  display:grid;
+ grid-template-columns: 1fr 1fr 1fr;
+}
+.videoSearch a{
+  text-decoration:none;
+}
+.videoRow{
+  margin-bottom:20px;
+  width:50vh;
+  border:1px solid #46CFBD;
+}
+.videoRow:hover{
+  transform: scale(1.1) 
+}
+.text{
+  color:#46CFBD;
+  text-align:center;
+  font-size:12px;
+  padding-left:20px;
+  padding-right: 20px;
+}
+.videoRow > img{
+  width:29%
+  height:50%;
+  object-fit:cover;
+}
+@media screen and (max-width:768px){
+  .videoSearch{
+     grid-template-columns: 1fr 2fr;
+    padding-left:0;
+    
+  }
+  .videoRow{
+    margin-left:20px;
+    
+  }
+}

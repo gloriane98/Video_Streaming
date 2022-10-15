@@ -3,6 +3,7 @@ import Navbar from '../Navbar'
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import Loader from '../Loader'
+import './SearchPage.css'
 
 const SearchPage = () => {
   let { searchQuery } = useParams();
@@ -32,21 +33,19 @@ const SearchPage = () => {
   return (
     <>
       <Navbar/>
-     <div className="videocontainer">
+     <div className="videoSearch">
      {
        !loader ?
        videoRows?.map((item)=>{
       const videoId=item.id.videoId;
         return (
-         <div>
-           <Link to={`/videoview/${videoId}`}  className="cards">
-            <img src={item.snippet.thumbnails.medium.url} alt="" />
-            <div className='items'>
-                <div className='texte'>
-                  <p>{item.snippet.channelTitle}</p>
+         <div className="videoRow">
+           <Link to={`/videoview/${videoId}`}  >
+              <img src={item.snippet.thumbnails.medium.url} alt="" />
+        <div className='text'>
+            <p>{item.snippet.channelTitle}</p>
                    <p>{item.snippet.title}</p>
-                </div>
-            </div>
+        </div>
             
             </Link>
          </div>
