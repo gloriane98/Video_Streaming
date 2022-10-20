@@ -1,7 +1,6 @@
 import firebase from 'firebase/compat/app'
 import "firebase/compat/auth"
-// import { initializeApp } from "firebase/app";
-// import {getAuth,GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI",
@@ -14,7 +13,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
  
-// export const app = initializeApp(firebaseConfig);
+
 
 export const auth= firebase.auth()
 export const provider = new firebase.auth.GoogleAuthProvider();
@@ -29,9 +28,3 @@ export const signInWithGoogle= async ()=>{
 
 export default firebase.auth();
 
-/*   signInWithPopup(provider).then((result)=>{
-       console.log(result)
-        localStorage.setItem('image',result.user.photoURL)
-        localStorage.setItem('token', result.user.accessToken)
-       
-    }).catch(error => console.log(error)) */

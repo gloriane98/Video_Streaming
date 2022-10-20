@@ -7,7 +7,7 @@ import './SearchPage.css'
 
 const SearchPage = () => {
   let { searchQuery } = useParams();
-  console.log(searchQuery)
+
   const [videoRows, setVideoRows] = useState([]);
   const [loader,setLoader]=useState(true)
   const fectData= ()=>{
@@ -16,7 +16,6 @@ const SearchPage = () => {
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`
     )
     .then((response) => {
-    console.log(response.data.items)
      setVideoRows(response.data.items)
       setLoader(false)
     })
@@ -27,7 +26,7 @@ const SearchPage = () => {
   useEffect(() => {
    fectData();
   
-  }, []);
+  }, [searchQuery]);
 
 
   return (
@@ -40,7 +39,7 @@ const SearchPage = () => {
       const videoId=item.id.videoId;
         return (
          <div className="videoRow">
-           <Link to={`/videoview/${videoId}`}  >
+           <Link key={item.id} to={`/videoview/${videoId}`}  >
               <img src={item.snippet.thumbnails.medium.url} alt="" />
         <div className='text'>
             <p>{item.snippet.channelTitle}</p>
