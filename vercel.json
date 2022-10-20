@@ -14,6 +14,21 @@
         "source": "/listvideochannel",
         "destination": "/index.html",
         "permanent": true
+      },
+      {
+        "source": "/like",
+        "destination": "/index.html",
+        "permanent": true
+      },
+      {
+        "source": "/searchpage",
+        "destination": "/index.html",
+        "permanent": true
+      },
+      {
+        "source": "/videoview",
+        "destination": "/index.html",
+        "permanent": true
       }
     ]
     }
