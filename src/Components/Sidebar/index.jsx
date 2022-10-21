@@ -1,31 +1,28 @@
 import React from 'react'
 import './Sidebar.css'
 import icons from '../../images/icons_subscription.svg'
-import fluent from '../../images/fluent_library-16-filled.svg'
-import trending from '../../images/fluent_data-trending-16-filled.svg'
-import {Link} from 'react-router-dom'
-import Logout from '../Logout'
+import { Link, NavLink } from 'react-router-dom'
 
 
 
 const Sidebar = () => {
+  let backGroundActive = { background:  "#FFAEBC" }
   return (
     <>
       <div className="sidecontainer">
         <div className="sidebarMenu">
-           <Link className="home" to='/dashboard'>
-           <i className="fa-solid fa-house"></i> 
-           <span>Home</span>
-           </Link>
-           <Link className="subcribe" to='/subcribe'>
-           <img src={icons} alt="icons subcription" />
-           <span className='abonner'> Subscription</span>
-           </Link>
-           <Link className="liked" to='/like'>
-           <i className="fa-solid fa-thumbs-up"></i> 
-           <span className='like'> Likes</span>
-           </Link>
-           <Logout/>
+          <NavLink className="home" to='/dashboard' style={({ isActive }) => (isActive ? backGroundActive : undefined)}>
+            <i className="fa-solid fa-house"></i>
+            <span>Home</span>
+          </NavLink>
+          <NavLink className="subcribe" to='/subcribe' style={({ isActive }) => (isActive ? backGroundActive : undefined)}>
+            <img src={icons} alt="subcription" />
+            <span className='abonner'> Subscription</span>
+          </NavLink>
+          <NavLink className="liked" to='/like' style={({ isActive }) => (isActive ? backGroundActive : undefined)}>
+            <i className="fa-solid fa-thumbs-up"></i>
+            <span className='like'> Like</span>
+          </NavLink>
         </div>
       </div>
     </>

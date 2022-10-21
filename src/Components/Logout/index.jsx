@@ -24,7 +24,7 @@ const Logout = () => {
 
   return (
     <>
-      <div id="btn-logout" onClick={NavigateSignIn}>Sign out with Google</div>
+      <div id="btn-logout" onClick={NavigateSignIn}>LogOut</div>
       
     </>
   )

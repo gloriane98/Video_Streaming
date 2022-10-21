@@ -3,6 +3,8 @@ import './Navbar.css'
 import icons from '../../images/iconsNavbar.png'
 import {Link} from 'react-router-dom'
 import Searchbar from '../Searchbar'
+import Logout from '../Logout'
+
 
 
 
@@ -19,13 +21,10 @@ const Navbar = () => {
        </Link>
         <Searchbar/>
         <div className="avatar-bloc">
-              
-        <div className="bell">
-              <span><i className="fa-solid fa-bell "></i></span>
-              </div>
             <div className="avatar">
               <img src={userImg} alt="user" className='avatar-user' />
             </div>
+          <Logout />
         </div>
    
     </nav> 

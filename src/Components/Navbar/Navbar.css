@@ -60,17 +60,10 @@ nav {
 @media screen and (max-width: 450px) {
     nav{
         width: 100vw;
+/*       align-items:center; */
     }
-    .search-bar > input{
-        display: none;
-    }
-    .search-bar> button{
-        background-color:#46CFBD;
-        color: #fff;
-        font-size: 25px;
-        margin: 0;
-        padding: 0;
-    }
+    
+   
     .logo{
         height: 60px;
         margin-left: -30px;
@@ -80,9 +73,7 @@ nav {
     }
    
     .title{
-        font-size: 30px;
-        padding-left: 8px;
-        padding-top: 20px;
+        display:none;
     }
     .bell{
         width:5%;

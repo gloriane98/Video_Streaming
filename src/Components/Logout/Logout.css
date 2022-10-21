@@ -1,13 +1,17 @@
 #btn-logout{
-    background-color: #fff;
-    color:#46CFBD;
-    padding: 10px;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 50px;
-    cursor:pointer;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  margin-top:15px;
+  margin-left:20px;
+  cursor:pointer;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+  color:#46CFBD;
+  padding: 10px;
+  height:20px;
 }
 
+@media screen and (max-width:450px){
+  margin-left:-50%;
+}

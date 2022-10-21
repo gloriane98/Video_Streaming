@@ -12,7 +12,6 @@ const SubcribeVideo = () => {
     const [subcribe, setSubcribe] = useState([])
     const [loading,setLoading]=useState(true)
     let token = window.localStorage.getItem('token')
-    console.log(token);
 
     const fetchVideoSubcribe = ()=>{
     fetch('https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails&maxResults=21&mine=true&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token='+token)

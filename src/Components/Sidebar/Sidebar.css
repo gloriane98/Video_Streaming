@@ -1,6 +1,6 @@
 .sidecontainer{
     background-color: #46CFBD;
-    height:100vh;
+    height:90vh;
     width: 20%;
     display:flex;
     flex-direction: column;
@@ -9,10 +9,12 @@
     margin-top: 70px;
  
 }
+
 .sidebarMenu{
-    height: 75%;
+    height: 50vh;
     display:flex;
     flex-direction: column;
+    justify-items:center;
     justify-content: space-evenly;
     margin: auto;
    
@@ -20,6 +22,7 @@
 .sidebarMenu a{
     text-decoration: none;
 }
+
 .subcribe{
     display: flex;
 }
@@ -37,6 +40,7 @@
     color:#fff;
     font-size: 30px;
 }
+
 @media screen and (max-width: 450px) {
     .sidecontainer{
         width: 100vw;
