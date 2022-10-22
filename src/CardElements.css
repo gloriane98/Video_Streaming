@@ -1,5 +1,5 @@
 .videocontainer{
-    width: 78vw;
+    /* width: 78vw; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

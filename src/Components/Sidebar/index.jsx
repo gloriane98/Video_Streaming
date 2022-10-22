@@ -11,7 +11,7 @@ const Sidebar = () => {
     <>
       <div className="sidecontainer">
         <div className="sidebarMenu">
-          <NavLink className="home" to='/home' style={({ isActive }) => (isActive ? backGroundActive : undefined)}>
+          <NavLink className="home" to='/pop' style={({ isActive }) => (isActive ? backGroundActive : undefined)}>
             <i className="fa-solid fa-house"></i>
             <span>Home</span>
           </NavLink>

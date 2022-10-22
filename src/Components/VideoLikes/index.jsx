@@ -31,8 +31,7 @@ const VideoLikes = () => {
 
     return (
     <>
-      <Navbar/>
-      <Sidebar/>
+     
         <div className="main">
                 <div className="videocontainer">
         {
