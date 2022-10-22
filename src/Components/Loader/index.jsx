@@ -2,8 +2,11 @@ import  React from 'react'
 
 const Loader = () => {
     return (
+        <div className='loader'>
+
         <div className='position-load'>
-            <div className="lds-ellipsis " ><div></div><div></div><div></div><div></div></div>
+             <div class="lds-hourglass"></div>
+        </div>
         </div>
     );
 };

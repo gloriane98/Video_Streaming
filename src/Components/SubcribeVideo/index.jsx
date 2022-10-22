@@ -1,8 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
-import '../../CardElements.css'
-import { useContext } from "react";
-import { UserContext } from "../../ContextAccount";
+import '../../CardElements.css';
 import Loader from "../Loader";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
