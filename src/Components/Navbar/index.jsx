@@ -8,7 +8,6 @@ import Logout from '../Logout'
 
 
 
-
 const Navbar = () => {
   let userImg=window.localStorage.getItem('image')
   return (
@@ -21,10 +20,13 @@ const Navbar = () => {
        </Link>
         <Searchbar/>
         <div className="avatar-bloc">
+              
+        <div className="bell">
+          <Logout/>
+              </div>
             <div className="avatar">
               <img src={userImg} alt="user" className='avatar-user' />
             </div>
-          <Logout />
         </div>
    
     </nav> 

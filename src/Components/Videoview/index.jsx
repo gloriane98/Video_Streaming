@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import Navbar from '../Navbar'
 import './Videoview.css'
-import Sidebar from '../Sidebar'
+// import Sidebar from '../Sidebar'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 // import {Link} from 'react-router-dom'
@@ -18,7 +18,7 @@ const Videoview = () => {
   return (
     <>
      <Navbar/>
-     <Sidebar/>
+     
      <div className="vidvicontainer">
         <div className="vidvicontent">
                 <IframeVideo videoId={videoId} />

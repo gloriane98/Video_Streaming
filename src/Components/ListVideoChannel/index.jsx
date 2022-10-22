@@ -32,8 +32,9 @@ const ListVideoChannel = () => {
     
   return (
     <>
-    <Navbar/>
-    <Sidebar/>
+      <Navbar/>
+    
+  
     <div>
       {isLoading ? (
         <div >
