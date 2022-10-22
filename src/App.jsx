@@ -12,6 +12,7 @@ import ListVideoChannel from './Components/ListVideoChannel';
 import {signInWithGoogle,auth} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import AppCenter from './Components/AppCenter';
+import VideoPop from './Components/VideoPop';
 
 
 
@@ -36,10 +37,13 @@ export default function App() {
   
     <UserContext.Provider value={{signInWithGoogle,loginState}}>
       <Routes>
-          <Route path='/' element={ !loginState ? <SignIn /> : <Navigate replace to={"/home"}/>}/>
-          <Route path='/home' element={<Dashboard/>} />
+          <Route path='/signin' element={ !loginState ? <SignIn /> : <Navigate replace to={"/"}/>}/>
           <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
-          <Route  element={<AppCenter/>}>
+
+          <Route element={<AppCenter/>}>
+              <Route path='/' element={<><Dashboard/><VideoPop/></>}/>
+
+              <Route path='/pop' element={<VideoPop/>}/>
 
               <Route path='/like' element={<VideoLikes/>}/>
 
@@ -55,3 +59,16 @@ export default function App() {
     </>
   )
 }
+
+/*    <Route path='/home' element={<Dashboard/>} />
+          <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
+          <Route  element={<AppCenter/>}>
+
+              <Route path='/like' element={<VideoLikes/>}/>
+
+              <Route path='/subcribe' element={<SubcribeVideo/>}/>
+
+              <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
+
+              <Route path='/videoview/:videoId' element={<Videoview/>}/>
+          </Route> */

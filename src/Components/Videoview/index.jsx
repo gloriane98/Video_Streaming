@@ -17,8 +17,7 @@ const Videoview = () => {
 
   return (
     <>
-     <Navbar/>
-     <Sidebar/>
+   
      
      <div className="vidvicontainer">
         <div className="vidvicontent">

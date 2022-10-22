@@ -28,9 +28,7 @@ const SubcribeVideo = () => {
 
 
 return <>
-        <Navbar/>
-        <Sidebar/>
-        
+   
     <div className="videocontainer">
   {
     !loading ?
