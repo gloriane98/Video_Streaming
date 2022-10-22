@@ -3,4 +3,10 @@
   margin: 0;
   padding: 0;
 }
+.gif{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+}
 

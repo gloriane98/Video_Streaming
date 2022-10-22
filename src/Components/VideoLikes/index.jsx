@@ -3,14 +3,12 @@ import Navbar from '../Navbar'
 import Sidebar from '../Sidebar'
 import '../../CardElements.css'
 import {Link} from 'react-router-dom'
-import { useContext } from 'react'
-import {UserContext} from "../../ContextAccount"
+
 
 import Loader from '../Loader'
 
 const VideoLikes = () => {
     const [videos, setVideo] = useState([])
-    // const {userToken, setUserToken} = useContext(UserContext)
     const [loading,setLoading]=useState(true)
     let token = window.localStorage.getItem('token')
 

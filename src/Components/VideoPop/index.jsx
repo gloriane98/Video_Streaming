@@ -1,9 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import '../../CardElements.css'
 import {Link} from 'react-router-dom'
-import { useContext } from 'react'
-import {UserContext} from "../../ContextAccount"
 import Loader from '../Loader'
+import PageError from '../PageError'
 
 
 const VideoPop = () => {
@@ -11,6 +10,8 @@ const VideoPop = () => {
 const [video, setVideo] = useState([])
 const [loading,setLoading]=useState(true)
 let token = window.localStorage.getItem('token')
+const [isError,setIsError]=useState(false)
+
 
 const fecthVideoPopular = ()=>{
   fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token='+token)
@@ -21,10 +22,15 @@ const fecthVideoPopular = ()=>{
     setVideo(data)
     setLoading(false)
   })
+  .catch(()=> setIsError(true))
 }
 useEffect(()=>{
   fecthVideoPopular();
 },[token])
+if(isError){
+  return( <PageError/>)
+}
+
 
 return (
     <>

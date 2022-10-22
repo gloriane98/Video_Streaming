@@ -29,19 +29,14 @@
     transform: rotate(1800deg);
   }
 }
+.position-load{
+  display: flex;
+  height: 80vh;
+  width:100vw;
+  justify-content: center;
+  align-items: center;
+ 
+}
 
-  /* .position-load{
-    display: flex;
-    height: 80vh;
-    width:100vw;
-    justify-content: center;
-    align-items: center;
-   
-  }
-
-  .loader{
-    border: 1px solid red ;
-    margin-left: 20%;
-    margin-top: 100px;
-  } */
+ 
   

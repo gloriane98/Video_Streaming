@@ -20,13 +20,3 @@ const Dashboard = () => {
 
 export default Dashboard
 
-/*  <Routes>
-   <Route path='/home' element={<AppCenter/>}>
-              <Route path='home/pop' element={<VideoPop/>}/>
-              <Route path='like' element={<VideoLikes/>}/>
-              <Route path='subcribe' element={<SubcribeVideo/>}/>
-              <Route path='listvideochannel/:channelId' element={<ListVideoChannel/>}/>
-              <Route path='videoview/:videoId' element={<Videoview/>}/>
-   </Route>
-   </Routes> 
-    <AppCenter/>*/

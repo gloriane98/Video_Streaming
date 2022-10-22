@@ -1,13 +1,14 @@
 import  React from 'react'
+import Gif from '../../images/Infinity-1s-200px.gif'
+import './Loader.css'
 
 const Loader = () => {
     return (
-        <div className='loader'>
-
         <div className='position-load'>
-             <div class="lds-hourglass"></div>
+            <img src={Gif} />
+             {/* <div class="lds-hourglass"></div> */}
         </div>
-        </div>
+      
     );
 };
 

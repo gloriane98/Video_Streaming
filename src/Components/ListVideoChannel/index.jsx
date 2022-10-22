@@ -7,6 +7,7 @@ import Navbar from '../Navbar'
 import Sidebar from '../Sidebar'
 import Loader from '../Loader'
 import { Link } from 'react-router-dom'
+import PageError from '../PageError'
 
 const ListVideoChannel = () => {
   
@@ -27,12 +28,12 @@ const ListVideoChannel = () => {
         .catch(()=> setIsError(true))
     },[])
     if(isError){
-        return( <div>not found</div>)
+        return( <PageError/>)
     }
     
   return (
     <>
-      <Navbar/>
+      <Navbar/> 
       <Sidebar/>
   
     <div>

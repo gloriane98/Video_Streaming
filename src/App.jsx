@@ -12,8 +12,6 @@ import ListVideoChannel from './Components/ListVideoChannel';
 import {signInWithGoogle,auth} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import AppCenter from './Components/AppCenter';
-import VideoPop from './Components/VideoPop'
-// import auth from './firebase'
 
 
 
@@ -41,7 +39,7 @@ export default function App() {
           <Route path='/' element={ !loginState ? <SignIn /> : <Navigate replace to={"/home"}/>}/>
           <Route path='/home' element={<Dashboard/>} />
           <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
-          <Route element={<AppCenter/>}>
+          <Route  element={<AppCenter/>}>
 
               <Route path='/like' element={<VideoLikes/>}/>
 
