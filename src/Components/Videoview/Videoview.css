@@ -1,17 +1,42 @@
 .vidvicontainer{
+  /* width: 78vw; */
   display:grid;
   grid-template-columns:1fr 2fr;
+  
   justify-content:center;
-  padding-left:30%;
+  align-items: flex-start;
+  padding-left:4%;
+  margin-left: 20%;
   padding-top:100px;
-
 
 }
 .vidvicontent{
 
 }
+.ListeVideo{
+  display: grid;
+  grid-template-columns: 1fr;
+  /* flex-direction: column; */
+  width: 50%;
+  border:1px solid red;
+  /* margin-left: 10px; */
+  /* object-fit: cover; */
+}
+.container{
+  width:30%;
+}
 /* @media screen and (max-width:768px) {
  .vidvicontainer{
    width:30%;
+
+
+   display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  
+  justify-content:center;
+  align-items: flex-start;
+  padding-left:18%;
+  margin-left: 20%;
+  padding-top:100px;
  }
 } */

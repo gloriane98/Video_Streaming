@@ -13,6 +13,7 @@ import {signInWithGoogle,auth} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import AppCenter from './Components/AppCenter';
 import VideoPop from './Components/VideoPop';
+import Playlist from './Components/Playlist';
 
 
 
@@ -41,7 +42,7 @@ export default function App() {
           <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
 
           <Route element={<AppCenter/>}>
-              <Route path='/' element={<><Dashboard/><VideoPop/></>}/>
+              <Route path='/' element={<><Dashboard/><Playlist/></>}/>
 
               <Route path='/pop' element={<VideoPop/>}/>
 

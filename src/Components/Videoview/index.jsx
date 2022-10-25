@@ -1,31 +1,45 @@
 import React,{ useState } from 'react'
-import Navbar from '../Navbar'
 import './Videoview.css'
-import Sidebar from '../Sidebar'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 // import {Link} from 'react-router-dom'
+import VideoPop from '../VideoPop'
+import VideoLikes from '../VideoLikes'
+import Loader from '../Loader'
 
 
 
 const Videoview = () => {
   // let {searchQuery}=useParams()
-  let {videoId}= useParams()
+  let {videoId}= useParams();
+  const [view , setView]= useState(true);
  
   
 
 
+  // if(view && !videoId){
+  //   return (
+  //     <div>
+  //       <Loader/>
+  //     </div>)
+  // }
   return (
     <>
-   
-     
+     {/* { !view ? 
+       (
+
+     ):<Loader/> */}
      <div className="vidvicontainer">
         <div className="vidvicontent">
                 <IframeVideo videoId={videoId} />
         </div>
      
-        <div></div>
+        {/* <div className='ListeVideo'>
+          <VideoPop className="container"/>
+          <VideoLikes  className="container"/>
+        </div> */}
      </div>
+    
     </>
   )
 }
