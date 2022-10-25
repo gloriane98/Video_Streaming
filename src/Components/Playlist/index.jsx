@@ -20,7 +20,6 @@ const fetchPlaylist = ()=>{
   .then(data =>{
     setVideo(data)
     setLoading(false)
-    console.log(data);
   })
   .catch(()=> setIsError(true))
 }

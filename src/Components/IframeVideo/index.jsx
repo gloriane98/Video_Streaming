@@ -4,7 +4,7 @@ import Youtube from 'react-youtube'
 const IframeVideo = ({videoId}) => {
   return (
     <div>
-      <Youtube width={750} videoId={videoId}/>
+      <Youtube width={200} videoId={videoId}/>
     </div>
   )
 }
