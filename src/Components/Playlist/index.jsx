@@ -34,6 +34,7 @@ if(isError){
 return (
     <>
     <div className='main'>
+      <h1 className="Titre">Home</h1>
  <div className="videocontainer">
  {
     !loading ?

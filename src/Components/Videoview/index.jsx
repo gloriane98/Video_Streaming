@@ -3,7 +3,7 @@ import './Videoview.css'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
-import Loader from '../Loader'
+// import Loader from '../Loader'
 // import {Link} from 'react-router-dom'
 // import VideoPop from '../VideoPop'
 // import VideoLikes from '../VideoLikes'
@@ -14,7 +14,7 @@ import Loader from '../Loader'
 const Videoview = () => {
   // let {searchQuery}=useParams()
   let {videoId}= useParams();
-  const [view , setView]= useState(true);
+  // const [view , setView]= useState(true);
   const [video, setVideo] = useState([])
 const [loading,setLoading]=useState(true)
 let token = window.localStorage.getItem('token')
@@ -43,6 +43,7 @@ if(isError){
     <>
   
      <div className="vidvicontainer">
+           {/* <h1 className='Titre'>Player</h1>  */}
         <div className="vidvicontent">
                 <IframeVideo videoId={videoId} />
         </div>

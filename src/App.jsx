@@ -61,15 +61,3 @@ export default function App() {
   )
 }
 
-/*    <Route path='/home' element={<Dashboard/>} />
-          <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
-          <Route  element={<AppCenter/>}>
-
-              <Route path='/like' element={<VideoLikes/>}/>
-
-              <Route path='/subcribe' element={<SubcribeVideo/>}/>
-
-              <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
-
-              <Route path='/videoview/:videoId' element={<Videoview/>}/>
-          </Route> */
