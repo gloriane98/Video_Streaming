@@ -45,7 +45,7 @@ return (
             <img src={video.snippet.thumbnails.medium.url} alt="" />
                 <div className="items">
                   <div className="texte">
-                    <p > {video.snippet.channelTitle} </p>
+                    <h3 > {video.snippet.channelTitle} </h3>
                     <p > {video.snippet.localized.title} </p>
                   </div>
                 </div>

@@ -16,14 +16,10 @@
   justify-content: flex-end;
   width: 20vw;
   margin-left:95%;
-}.ListeVideo p{
-  color: #46CFBD;
-  font-weight: 800;
-  font-size: 12px;
-  padding-left: 10px;
 }
 .videoCard{
-  border: #46CFBD 2px solid;
+  border: 2px solid #007464;
+  border-radius: 10px;
   width: 20vw;
   height: 250px;
   margin-bottom: 20px;
@@ -31,15 +27,9 @@
 .ListeVideo img{
   width: 100%;
   object-fit: cover;
+  border-radius: 8px 8px 0px  0px;
 }
-/* .ListeVideo a{
-  width: 20vw;
-  height: 300px;
- 
 
-
-
-} */
 .vidvicontent{
   position: fixed;
 }

@@ -40,7 +40,7 @@ return <>
             <img src={video.snippet.thumbnails.medium.url} alt="youtube chaine" />
                 <div className="items">
                   <div className="texte">
-                    <p >{video.snippet.title}</p>
+                    <h3 >{video.snippet.title}</h3>
                     <p >{video.snippet.publishedAt}</p>
                     <p>{video.contentDetails.totalItemCount}</p>
                   </div>
