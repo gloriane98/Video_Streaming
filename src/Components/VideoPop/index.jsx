@@ -14,7 +14,7 @@ const [isError,setIsError]=useState(false)
 
 
 const fecthVideoPopular = ()=>{
-  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token='+token)
+  fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&key=${import.meta.env.VITE_APP_APIKEY}&access_token=`+token)
   .then(response =>{
     return response.json()
   })

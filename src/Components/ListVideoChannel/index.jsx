@@ -17,7 +17,7 @@ const ListVideoChannel = () => {
     const [isError,setIsError]=useState(false)
 
     useEffect(()=>{
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=21&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`)
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=21&key=${import.meta.env.VITE_APP_APIKEY}`)
         .then(response =>{
             return response.json()
         })

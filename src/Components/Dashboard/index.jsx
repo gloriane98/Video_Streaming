@@ -5,6 +5,8 @@ import Sidebar from '../Sidebar'
 
 
 const Dashboard = () => {
+
+ 
   return (
     <div className='detailscontainer'>
       <Navbar/>
