@@ -16,7 +16,7 @@ const [isError,setIsError]=useState(false)
 
 
 const fetchPlaylist = ()=>{
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&relatedToVideoId=${videoId}&safeSearch=none&type=video&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token=`+token) 
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&relatedToVideoId=${videoId}&safeSearch=none&type=video&key=${import.meta.env.VITE_APP_APIKEY}&access_token=`+token) 
   .then(response =>{
     return response.json()
   })

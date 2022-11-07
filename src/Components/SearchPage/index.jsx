@@ -13,7 +13,7 @@ const SearchPage = () => {
   const fectData= ()=>{
     axios
     .get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&type=video&q=${searchQuery}&safeSearch=none&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&type=video&q=${searchQuery}&safeSearch=none&key=${import.meta.env.VITE_APP_APIKEY}`
     )
     .then((response) => {
      setVideoRows(response.data.items)
