@@ -3,6 +3,10 @@ import '../../CardElements.css'
 import {Link} from 'react-router-dom'
 import Loader from '../Loader'
 import PageError from '../PageError'
+import moment from 'moment'
+import ShowMoreText from "react-show-more-text"
+
+
 
 
 const VideoPop = () => {
@@ -11,6 +15,8 @@ const [video, setVideo] = useState([])
 const [loading,setLoading]=useState(true)
 let token = window.localStorage.getItem('token')
 const [isError,setIsError]=useState(false)
+
+
 
 
 const fecthVideoPopular = ()=>{
@@ -39,14 +45,35 @@ return (
   {
     !loading ?
     video.items?.map((video)=>{
+      const titleVideo = video.snippet.localized.title;
+      const datePublish =video.snippet.publishedAt;
+      const views = video.statistics.viewCount;
+      const calculViews = views / (1024).toFixed(1)
+      const around = Math.trunc(calculViews)
+      const videoItem=video.snippet.channelId;
+      
+
       return(
 
      <Link key={video.id} className="cards" to={`/videoview/${video.id}`}>
             <img src={video.snippet.thumbnails.medium.url} alt="" />
                 <div className="items">
                   <div className="texte">
-                    <h3 > {video.snippet.channelTitle} </h3>
-                    <p > {video.snippet.localized.title} </p>
+                    <h4>{moment.utc((moment.duration(`${video.contentDetails.duration}`).asSeconds())*1000).format("mm:ss")}</h4>
+                    <h3 > 
+                        <ShowMoreText   
+                          more="Show more"
+                          less="Show less" 
+                          lines={1} 
+                          truncatedEndingComponent={"... "}>
+
+                                  {titleVideo} 
+                        </ShowMoreText>
+                    </h3>
+                    <Link to={`/listvideochannel/${videoItem}`} >
+                       <p > {video.snippet.channelTitle} </p>
+                    </Link>
+                    <div><span>{around + ' '+ 'K'} views</span>&nbsp;&nbsp;&nbsp;<span>{moment(datePublish, "YYYYMMDD").fromNow()}</span></div>
                   </div>
                 </div>
           </Link>

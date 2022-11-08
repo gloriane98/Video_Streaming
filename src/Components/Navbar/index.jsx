@@ -4,12 +4,16 @@ import icons from '../../images/iconsNavbar.png'
 import {Link} from 'react-router-dom'
 import Searchbar from '../Searchbar'
 import Logout from '../Logout'
+import { useContext } from 'react'
+import { UserContext } from '../../ContextAccount'
 
 
 
 
 const Navbar = () => {
   let userImg=window.localStorage.getItem('image')
+  let {loginState} = useContext(UserContext)
+  
   return (
     <>
      <nav>
@@ -20,7 +24,6 @@ const Navbar = () => {
        </Link>
         <Searchbar/>
         <div className="avatar-bloc">
-              
         <div className="bell">
           <Logout/>
               </div>

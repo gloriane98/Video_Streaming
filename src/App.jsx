@@ -38,11 +38,11 @@ export default function App() {
   
     <UserContext.Provider value={{signInWithGoogle,loginState}}>
       <Routes>
-          <Route path='/signin' element={ !loginState ? <SignIn /> : <Navigate replace to={"/"}/>}/>
+          <Route path='/' element={ !loginState ? <SignIn /> : <Navigate replace to={"/home"}/>}/>
           <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
 
           <Route element={<AppCenter/>}>
-              <Route path='/' element={<><Dashboard/><VideoPop/></>}/>
+              <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
               
               <Route path='/like' element={<VideoLikes/>}/>
 
