@@ -5,8 +5,8 @@ import './Loader.css'
 const Loader = () => {
     return (
         <div className='position-load'>
-            <img src={Gif} />
-             {/* <div class="lds-hourglass"></div> */}
+            {/* <img src={Gif} /> */}
+             <div class="lds-hourglass"></div>
         </div>
       
     );

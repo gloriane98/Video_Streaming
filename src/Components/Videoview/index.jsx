@@ -3,6 +3,8 @@ import './Videoview.css'
 import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
+import ShowMoreText from "react-show-more-text"
+
 
 
 
@@ -16,13 +18,14 @@ const [isError,setIsError]=useState(false)
 
 
 const fetchPlaylist = ()=>{
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&relatedToVideoId=${videoId}&safeSearch=none&type=video&key=AIzaSyCIg37omAzeHksxcWhojllg8zdxt4iTRwI&access_token=`+token) 
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&relatedToVideoId=${videoId}&safeSearch=none&type=video&key=${import.meta.env.VITE_APP_APIKEY}&access_token=`+token) 
   .then(response =>{
     return response.json()
   })
   .then(data =>{
     setVideo(data)
     setLoading(false)
+    console.log(data.items)
   })
   .catch(()=> setIsError(true))
 }
@@ -44,14 +47,26 @@ if(isError){
         <div className='ListeVideo'>
         {
           video.items?.map((video)=>{
+              const videoItem=video.snippet.channelId;
+
             return(
 
           <Link key={video.id.videoId} className="videoCard" to={`/videoview/${video.id.videoId}`}>
                   <img src={video.snippet.thumbnails.medium.url} alt="" />
                       <div className="">
                         <div className="texte">
-                          <h3 > {video.snippet.channelTitle} </h3>
-                          <p > {video.snippet.title} </p>
+                          <h3 > 
+                              <ShowMoreText   
+                              more="Show more"
+                              less="Show less" 
+                              lines={1} 
+                              truncatedEndingComponent={"... "}>
+                                {video.snippet.title} 
+                              </ShowMoreText>
+                            </h3>
+                            <Link to={`/listvideochannel/${videoItem}`} >
+                                 <p > {video.snippet.channelTitle} </p>
+                           </Link>
                         </div>
                       </div>
                 </Link>
