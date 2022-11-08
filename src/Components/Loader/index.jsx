@@ -6,10 +6,10 @@ const Loader = () => {
     return (
         <div className='position-load'>
             {/* <img src={Gif} /> */}
-             <div class="lds-hourglass"></div>
+             <div className="lds-hourglass"></div>
         </div>
       
     );
-};
+};    
 
 export default Loader;

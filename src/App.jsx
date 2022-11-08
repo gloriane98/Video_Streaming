@@ -19,9 +19,15 @@ import VideoPop from './Components/VideoPop';
 export default function App() {
  
         const [loginState,setLoginState]=useState(false)
+        const [userToken, setUserToken]=useState('')
+
+
         
 
         useEffect(()=>{
+          let token = localStorage.getItem('token')
+          setUserToken(token)
+
           onAuthStateChanged(auth,(data)=>{
             if(data){
               setLoginState(true);
@@ -35,10 +41,12 @@ export default function App() {
         
   return (
     <>
-  
-    <UserContext.Provider value={{signInWithGoogle,loginState}}>
+    <UserContext.Provider value={{signInWithGoogle,setUserToken, userToken}}>
       <Routes>
-          <Route path='/' element={ !loginState ? <SignIn /> : <Navigate replace to={"/home"}/>}/>
+        {!userToken ?
+          <Route path='/' element={  <SignIn />}/> : 
+          <>
+         
           <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
 
           <Route element={<AppCenter/>}>
@@ -52,6 +60,8 @@ export default function App() {
 
               <Route path='/videoview/:videoId' element={<Videoview/>}/>
           </Route>
+          </>
+        }
           
       </Routes>
     </UserContext.Provider> 
