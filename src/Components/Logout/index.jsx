@@ -16,7 +16,7 @@ const Logout = () => {
       signOut(auth);
      
     } else {
-      navigate("/signin");
+      navigate("/");
       localStorage.removeItem('image')
       localStorage.removeItem('token')
     }
