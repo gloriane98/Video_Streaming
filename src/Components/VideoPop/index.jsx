@@ -60,7 +60,7 @@ return (
                 <div className="items">
                   <div className="texte">
                     <h4>{moment.utc((moment.duration(`${video.contentDetails.duration}`).asSeconds())*1000).format("mm:ss")}</h4>
-                    <h3 > 
+                    <h4 > 
                         <ShowMoreText   
                           more="Show more"
                           less="Show less" 
@@ -69,7 +69,7 @@ return (
 
                                   {titleVideo} 
                         </ShowMoreText>
-                    </h3>
+                    </h4>
                     <Link to={`/listvideochannel/${videoItem}`} >
                        <p > {video.snippet.channelTitle} </p>
                     </Link>
