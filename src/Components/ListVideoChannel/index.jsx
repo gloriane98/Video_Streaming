@@ -55,7 +55,6 @@ const ListVideoChannel = () => {
                           <Link to={`/listvideochannel/${videoItem}`} >
                                <p > {video.snippet.channelTitle} </p>
                             </Link>
-                          <p>{moment.utc((moment.duration(`${video.snippet.publishTime}`).asSeconds())*1000).format("mm:ss")}</p>
                       </div>
                   </div>
             </Link>
