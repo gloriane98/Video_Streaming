@@ -2,6 +2,7 @@ import firebase from 'firebase/compat/app'
 import "firebase/compat/auth"
 
 
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_APIKEY,
   authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
@@ -20,8 +21,13 @@ provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
 export const signInWithGoogle= async ()=>{
   const response = await auth.signInWithPopup(provider);
   console.log(response);
-  localStorage.setItem('image',response.additionalUserInfo.profile.picture)
-  localStorage.setItem('token', response.credential.accessToken)
+  // localStorage.setItem('image',response.additionalUserInfo.profile.picture)
+  // localStorage.setItem('token', response.credential.accessToken)
+  if(response) {
+    window.location.href='/home';
+    localStorage.setItem('image',response.additionalUserInfo.profile.picture)
+    localStorage.setItem('token', response.credential.accessToken)
+  }
 }
 
 export default firebase.auth();

@@ -4,9 +4,8 @@ import icons from '../../images/iconsAccueil.png'
 import { useContext } from 'react'
 import { UserContext } from '../../ContextAccount'
 
-
 const SignIn = () => {
-const {signInWithGoogle}=useContext(UserContext)
+  const {signInWithGoogle}=useContext(UserContext)
 
   return (
     <>
@@ -14,7 +13,7 @@ const {signInWithGoogle}=useContext(UserContext)
         <div className="center-items">
             <img src={icons} alt="logo" />
             <h1>SmartView</h1>
-           <div id="started" onClick={signInWithGoogle}>
+            <div id="started" onClick={signInWithGoogle}>
             Sign in with Google
            </div>
           

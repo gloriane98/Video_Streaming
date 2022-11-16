@@ -16,12 +16,19 @@ import VideoPop from './Components/VideoPop';
 
 
 
+
 export default function App() {
  
         const [loginState,setLoginState]=useState(false)
+        const [userToken, setUserToken]=useState('')
+
+
         
 
         useEffect(()=>{
+          let token = localStorage.getItem('token')
+          setUserToken(token)
+
           onAuthStateChanged(auth,(data)=>{
             if(data){
               setLoginState(true);
@@ -35,24 +42,24 @@ export default function App() {
         
   return (
     <>
-  
-    <UserContext.Provider value={{signInWithGoogle,loginState}}>
+    <UserContext.Provider value={{signInWithGoogle, setUserToken,userToken}} >
       <Routes>
-          <Route path='/' element={ !loginState ? <SignIn /> : <Navigate replace to={"/home"}/>}/>
-          <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
+          <Route  path='/' element={<AppCenter/>}>
+             
+                    <Route path='*' element={<Navigate to={loginState ? "/" : "/home"}/>} />
+                    <Route  path='/' element={ loginState ? <SignIn /> : <Navigate replace to="/home"/>}/> 
+                    <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
+                    <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
+                    
+                    <Route path='/like' element={<><Dashboard/><VideoLikes/></>}/>
 
-          <Route element={<AppCenter/>}>
-              <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
-              
-              <Route path='/like' element={<VideoLikes/>}/>
+                    <Route path='/subcribe' element={<><Dashboard/><SubcribeVideo/></>}/>
 
-              <Route path='/subcribe' element={<SubcribeVideo/>}/>
+                    <Route path='/listvideochannel/:channelId' element={<><Dashboard/><ListVideoChannel/></>}/>
 
-              <Route path='/listvideochannel/:channelId' element={<ListVideoChannel/>}/>
-
-              <Route path='/videoview/:videoId' element={<Videoview/>}/>
+                    <Route path='/videoview/:videoId' element={<><Dashboard/><Videoview/></>}/>
           </Route>
-          
+
       </Routes>
     </UserContext.Provider> 
     </>

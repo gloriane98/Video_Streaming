@@ -1,16 +1,16 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Dashboard from '../Dashboard'
-import VideoPop from '../VideoPop'
+import { Outlet} from 'react-router-dom'
+
+
 
 
 
 const AppCenter = () => {
+
+
   return (
     <>
-    <div className="AppContainer">
-     <Dashboard/>
-     {/* <VideoPop/> */}
+    <div className="AppContainer">   
       <Outlet/>
     </div>
     </>

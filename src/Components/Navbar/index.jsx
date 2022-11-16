@@ -6,13 +6,14 @@ import Searchbar from '../Searchbar'
 import Logout from '../Logout'
 import { useContext } from 'react'
 import { UserContext } from '../../ContextAccount'
+import UserImage from '../UserImage'
+
 
 
 
 
 const Navbar = () => {
-  let userImg=window.localStorage.getItem('image')
-  let {loginState} = useContext(UserContext)
+  let {loginState} = useContext(UserContext);
   
   return (
     <>
@@ -23,14 +24,14 @@ const Navbar = () => {
         <span className='title'>SmartView</span>
        </Link>
         <Searchbar/>
-        <div className="avatar-bloc">
-        <div className="bell">
-          <Logout/>
+          <div className="avatar-bloc">
+          <div className="bell">
+                <Logout/>
+                </div>
+              <div className="avatar">
+                <UserImage/>
               </div>
-            <div className="avatar">
-              <img src={userImg} alt="user" className='avatar-user' />
-            </div>
-        </div>
+          </div>
    
     </nav> 
     

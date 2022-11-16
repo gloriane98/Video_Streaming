@@ -51,7 +51,7 @@ const ListVideoChannel = () => {
                 <img src={video.snippet.thumbnails.medium.url}  alt="" />
                   <div className="items">
                       <div className="texte">
-                          <h3 >{video.snippet.title}</h3>
+                          <h4>{video.snippet.title}</h4>
                           <Link to={`/listvideochannel/${videoItem}`} >
                                <p > {video.snippet.channelTitle} </p>
                             </Link>
