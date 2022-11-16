@@ -8,14 +8,21 @@ import {auth} from '../../firebase'
 
 
 const Logout = () => {
-  const {setUserToken}= useContext(UserContext)
+  const {setUserToken,loginState}= useContext(UserContext)
   const navigate = useNavigate()
 
   const NavigateSignIn= ()=>{
-    setUserToken(null)
-    localStorage.removeItem('image')
-    localStorage.removeItem('token')
-    navigate("/")
+    if(setUserToken){
+      signOut(auth)
+    }else{
+      // localStorage.removeItem('image')
+      // localStorage.removeItem('token')
+      navigate("/")
+    }
+    // setUserToken(null)
+    // localStorage.removeItem('image')
+    // localStorage.removeItem('token')
+    // navigate("/")
 
   }
 
