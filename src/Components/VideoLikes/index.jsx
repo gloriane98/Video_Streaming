@@ -3,6 +3,7 @@ import '../../CardElements.css'
 import {Link} from 'react-router-dom'
 import moment from 'moment'
 import ShowMoreText from "react-show-more-text"
+import numeral from 'numeral';
 
 
 
@@ -41,8 +42,8 @@ const VideoLikes = () => {
                 const titleVideo = video.snippet.localized.title
                 const datePublish =video.snippet.publishedAt;
                 const views = video.statistics.viewCount;
-                const calculViews = views / (1024).toFixed(1)
-                const around = Math.trunc(calculViews)
+                console.log(views)
+               
                 const videoItem=video.snippet.channelId;
 
             return(
@@ -64,7 +65,7 @@ const VideoLikes = () => {
                             <Link to={`/listvideochannel/${videoItem}`} >
                                <p > {video.snippet.channelTitle} </p>
                             </Link>
-                            <div><span>{around + ' '+ 'K'} views</span>&nbsp;&nbsp;&nbsp;<span>{moment(datePublish, "YYYYMMDD").fromNow()}</span></div>
+                            <div><span>{numeral(views).format("0.a")} views</span> &nbsp;&nbsp;&nbsp;<span>{moment(datePublish, "YYYYMMDD").fromNow()}</span></div>
                         </div>
                     </div>
                 </Link>

@@ -44,21 +44,27 @@ export default function App() {
     <>
     <UserContext.Provider value={{signInWithGoogle, setUserToken,userToken}} >
       <Routes>
-          <Route  path='/' element={<AppCenter/>}>
+          {!userToken ? 
+          <Route  path='/' element={<SignIn />}/> 
+          :
+            <>
+          <Route  element={<AppCenter/>}>
              
-                    <Route path='*' element={<Navigate to={loginState ? "/" : "/home"}/>} />
-                    <Route  path='/' element={ loginState ? <SignIn /> : <Navigate replace to="/home"/>}/> 
-                    <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
-                    <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
+              <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
+              <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
                     
-                    <Route path='/like' element={<><Dashboard/><VideoLikes/></>}/>
+              <Route path='/like' element={<><Dashboard/><VideoLikes/></>}/>
 
-                    <Route path='/subcribe' element={<><Dashboard/><SubcribeVideo/></>}/>
+              <Route path='/subcribe' element={<><Dashboard/><SubcribeVideo/></>}/>
 
-                    <Route path='/listvideochannel/:channelId' element={<><Dashboard/><ListVideoChannel/></>}/>
+              <Route path='/listvideochannel/:channelId' element={<><Dashboard/><ListVideoChannel/></>}/>
 
-                    <Route path='/videoview/:videoId' element={<><Dashboard/><Videoview/></>}/>
+              <Route path='/videoview/:videoId' element={<><Dashboard/><Videoview/></>}/>
           </Route>
+          {/* <Route path='*' element={<Navigate to={userToken ? "/" : "/home"}/>} /> */}
+            </>
+        }
+
 
       </Routes>
     </UserContext.Provider> 
