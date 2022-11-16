@@ -5,6 +5,7 @@ import Loader from '../Loader'
 import PageError from '../PageError'
 import moment from 'moment'
 import ShowMoreText from "react-show-more-text"
+import numeral from 'numeral';
 
 
 
@@ -48,8 +49,6 @@ return (
       const titleVideo = video.snippet.localized.title;
       const datePublish =video.snippet.publishedAt;
       const views = video.statistics.viewCount;
-      const calculViews = views / (1024).toFixed(1)
-      const around = Math.trunc(calculViews)
       const videoItem=video.snippet.channelId;
       
 
@@ -73,7 +72,7 @@ return (
                     <Link to={`/listvideochannel/${videoItem}`} >
                        <p > {video.snippet.channelTitle} </p>
                     </Link>
-                    <div><span>{around + ' '+ 'K'} views</span>&nbsp;&nbsp;&nbsp;<span>{moment(datePublish, "YYYYMMDD").fromNow()}</span></div>
+                    <div><span>{numeral(views).format("0.a")} views</span> &nbsp;&nbsp;&nbsp;<span>{moment(datePublish, "YYYYMMDD").fromNow()}</span></div>
                   </div>
                 </div>
           </Link>
