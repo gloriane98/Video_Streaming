@@ -3,26 +3,26 @@ import "./Logout.css"
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../../ContextAccount'
-import { signOut} from 'firebase/auth'
-import {auth} from '../../firebase'
+// import { signOut} from 'firebase/auth'
+// import {auth} from '../../firebase'
 
 
 const Logout = () => {
-  const {setUserToken,loginState}= useContext(UserContext)
+  const {setUserToken}= useContext(UserContext)
   const navigate = useNavigate()
 
   const NavigateSignIn= ()=>{
-    if(setUserToken){
+  /*   if(setUserToken){
       signOut(auth)
     }else{
-      // localStorage.removeItem('image')
-      // localStorage.removeItem('token')
+      localStorage.removeItem('image')
+      localStorage.removeItem('token')
       navigate("/")
-    }
-    // setUserToken(null)
-    // localStorage.removeItem('image')
-    // localStorage.removeItem('token')
-    // navigate("/")
+    } */
+    setUserToken(null)
+    localStorage.removeItem('image')
+    localStorage.removeItem('token')
+    navigate("/")
 
   }
 

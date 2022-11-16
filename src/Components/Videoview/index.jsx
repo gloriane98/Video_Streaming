@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
 import ShowMoreText from "react-show-more-text"
+import {HashLink} from 'react-router-hash-link'
 
 
 
@@ -25,7 +26,6 @@ const fetchPlaylist = ()=>{
   .then(data =>{
     setVideo(data)
     setLoading(false)
-    console.log(data.items)
   })
   .catch(()=> setIsError(true))
 }
@@ -40,7 +40,7 @@ if(isError){
     <>
   
      <div className="vidvicontainer">
-        <div className="vidvicontent">
+        <div className="vidvicontent" id='read'>
                 <IframeVideo videoId={videoId} />
         </div>
 
@@ -51,7 +51,7 @@ if(isError){
 
             return(
 
-          <Link key={video.id.videoId} className="videoCard" to={`/videoview/${video.id.videoId}`}>
+          <HashLink key={video.id.videoId} className="videoCard" to={`/videoview/${video.id.videoId}#read`}>
                   <img src={video.snippet.thumbnails.medium.url} alt="" />
                       <div className="">
                         <div className="texte">
@@ -69,7 +69,7 @@ if(isError){
                            </Link>
                         </div>
                       </div>
-                </Link>
+                </HashLink>
                 )
                 
               })}
@@ -83,18 +83,3 @@ if(isError){
 export default Videoview
 
 
-/*   'https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=Ks-_Mh1QhMc&type=video&key=[YOUR_API_KEY]' \
-  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
-  --header 'Accept: application/json' \
-  --compresse 
-  
-  curl \
-  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&relatedToVideoId=Ks-_Mh1QhMc&safeSearch=none&type=video&key=[YOUR_API_KEY]' \
-  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
-  --header 'Accept: application/json' \
-  --compressed
-
-  
-  
-  
-  */

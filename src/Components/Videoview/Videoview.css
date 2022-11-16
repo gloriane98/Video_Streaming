@@ -33,26 +33,41 @@
 .vidvicontent{
   position: fixed;
 }
-/* @media screen and (max-width:768px) {
- .vidvicontainer{
-   width:30%;
+
+@media screen  and (max-width:450px){
+  .vidvicontainer{
+    flex-direction: column;
+    padding: 0;
+  }
+  .ListeVideo{
+      margin: 0;
+      padding-left: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: auto;
+      width: 100vw;
+      padding-bottom: 90px;
+
+  }
+  .videoCard{
+    padding:0;
+    margin: 0;
+    width: 100vw;
+    border-radius: 10px;
+    height: 40vh;
+  }
+  .videoRow:hover{
+      transition: all ease-in-out 0.1s;
+      transform:none;
+  }
+  .vidvicontent{
+    padding-top: 71px;
+    position: static;
+  }
+  .texte h3,p{
+    font-size: medium;
+  }
+}
 
 
-   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  
-  justify-content:center;
-  align-items: flex-start;
-  padding-left:18%;
-  margin-left: 20%;
-  padding-top:100px;
- }
-} 
 
-
-
-
-*
-
-
-/
