@@ -13,6 +13,7 @@ import {signInWithGoogle,auth} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import AppCenter from './Components/AppCenter';
 import VideoPop from './Components/VideoPop';
+import SettingProfile from './Components/SettingProfile';
 
 
 
@@ -48,8 +49,8 @@ export default function App() {
           <Route  path='/' element={<SignIn />}/> 
           :
             <>
+          {/* <Route path='/*' element={<Navigate to={userToken ? "/" : "/home"}/>} /> */}
           <Route  element={<AppCenter/>}>
-             
               <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
               <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
                     
@@ -59,9 +60,9 @@ export default function App() {
 
               <Route path='/listvideochannel/:channelId' element={<><Dashboard/><ListVideoChannel/></>}/>
 
+              <Route path='/profile' element={<><Dashboard/><SettingProfile/></>}/>
               <Route path='/videoview/:videoId' element={<><Dashboard/><Videoview/></>}/>
           </Route>
-          {/* <Route path='*' element={<Navigate to={userToken ? "/" : "/home"}/>} /> */}
             </>
         }
 

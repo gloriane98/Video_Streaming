@@ -2,7 +2,7 @@ const express= require('express');
 const app = express();
 const mongoose= require('./config/db')
 
-
+const RoutesUser= require('./routes/userRoute')
 
 mongoose;
 app.use((req, res, next) => {
@@ -12,5 +12,8 @@ app.use((req, res, next) => {
     next();
 });
 app.use(express.json());
+app.use('/user',RoutesUser);
+
+
 
 module.exports= app;
