@@ -5,6 +5,7 @@ import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
 import ShowMoreText from "react-show-more-text"
 import {HashLink} from 'react-router-hash-link'
+import Comment from '../Comment'
 
 
 
@@ -38,12 +39,14 @@ if(isError){
 
   return (
     <>
-  
+ 
      <div className="vidvicontainer">
         <div className="vidvicontent" id='read'>
                 <IframeVideo videoId={videoId} />
         </div>
-
+        <div className='comment'>
+          <Comment/>
+        </div>
         <div className='ListeVideo'>
         {
           video.items?.map((video)=>{
@@ -75,7 +78,7 @@ if(isError){
               })}
         </div>
      </div>
-    
+   
     </>
   )
 }

@@ -77,8 +77,9 @@ nav {
     .bell{
         margin-left: -60%;
     }
-    .avatar{
-        display: none;
-    }
+   .avatar{
+    margin-left: 0;
+
+   }
     
 }

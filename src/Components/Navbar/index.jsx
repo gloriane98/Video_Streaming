@@ -7,6 +7,7 @@ import Logout from '../Logout'
 import { useContext } from 'react'
 import { UserContext } from '../../ContextAccount'
 import UserImage from '../UserImage'
+import Notify from '../Notify'
 
 
 
@@ -26,7 +27,7 @@ const Navbar = () => {
         <Searchbar/>
           <div className="avatar-bloc">
           <div className="bell">
-                <Logout/>
+                <Notify/>
                 </div>
               <div className="avatar">
                 <UserImage/>
