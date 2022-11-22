@@ -1,5 +1,5 @@
 {
-  "name": "back-end",
+  "name": "personal-youtube_back-end",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,5 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.3.0",
+    "mongoose": "^6.7.2"
+  }
 }
