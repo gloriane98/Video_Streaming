@@ -7,5 +7,4 @@ const verifyUser= (async ()=>{
     Authorization: `Bearer ${idToken}`,
   })
   
-  console.log(idToken);
 })
