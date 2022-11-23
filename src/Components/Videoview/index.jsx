@@ -5,8 +5,7 @@ import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
 import ShowMoreText from "react-show-more-text"
 import {HashLink} from 'react-router-hash-link'
-import Comment from '../Comment'
-
+import CommentBox from '../../CommentBox/CommentBox'
 
 
 
@@ -45,7 +44,7 @@ if(isError){
                 <IframeVideo videoId={videoId} />
         </div>
         <div className='comment'>
-          <Comment/>
+          <CommentBox/>
         </div>
         <div className='ListeVideo'>
         {

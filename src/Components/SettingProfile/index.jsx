@@ -16,7 +16,6 @@ export default function SettingProfile() {
     
   const { enqueueSnackbar } = useSnackbar();
   const handleClickVariant = (variant) => () => {
-    // variant could be success, error, warning, info, or default
     enqueueSnackbar('This is a success message!', { variant });
   };
 
@@ -82,22 +81,10 @@ export default function SettingProfile() {
                             >
                         </TextField>
                         <TextField
-                            required
-                            id="prenom"
-                            placeholder="First name"
-                            sx={{backgroundColor:"#E4E4EC",
-                            mb:"20px",
-                            width: { sm: 300, md: 300, xs:300, lg:400 },
-                            "& .MuiInputBase-root": {
-                                height: 40
-                            }}}
-                            >
-                        </TextField>
-                        <TextField
                          
                             id="fb"
                             type="Facebook"
-                            placeholder='Mot de passe'
+                            placeholder='Facebook'
                             sx={{backgroundColor:"#E4E4EC",
                             mb:"20px",
                             width:{ sm: 300, md: 300, xs:300, lg:400 },
