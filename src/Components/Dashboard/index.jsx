@@ -8,7 +8,7 @@ const Dashboard = () => {
   useEffect(() => {
     auth.currentUser
       ?.getIdToken()
-      .then(async (idToken) => {
+      .then( async(idToken) => {
           const response = await axios.post(
           `${import.meta.env.VITE_APP_URL}/user`,
           {

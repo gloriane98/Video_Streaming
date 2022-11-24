@@ -8,7 +8,8 @@ const userSchema= new Schema({
    picture:{type: String},
    facebook:{type: String},
    instagram:{type: String},
-   twitter:{typr: String}
+   twitter:{typr: String},
+   tags:[{type:String}]
 })
 
 const userModel=mongoose.model('user', userSchema)

@@ -13,8 +13,6 @@ import {signInWithGoogle,auth} from '../src/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import AppCenter from './Components/AppCenter';
 import VideoPop from './Components/VideoPop';
-import SettingProfile from './Components/SettingProfile';
-
 
 
 
@@ -22,9 +20,6 @@ export default function App() {
  
         const [loginState,setLoginState]=useState(false)
         const [userToken, setUserToken]=useState('')
-
-
-        
 
         useEffect(()=>{
           let token = localStorage.getItem('token')
@@ -43,33 +38,20 @@ export default function App() {
         
   return (
     <>
-    <UserContext.Provider value={{signInWithGoogle, setUserToken,userToken}} >
+    <UserContext.Provider value={{signInWithGoogle,setUserToken, userToken}}>
       <Routes>
-          {!userToken ? 
-          <Route  path='/' element={<SignIn />}/> 
-          :
-            <>
-          {/* <Route path='/*' element={<Navigate to={userToken ? "/" : "/home"}/>} /> */}
-          <Route  element={<AppCenter/>}>
-              <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
+          <Route  path='/' element={!userToken ? <SignIn /> : <Navigate to="/home"/>}/> 
+          <Route element={<AppCenter/>}>
               <Route path='/home' element={<><Dashboard/><VideoPop/></>}/>
-                    
               <Route path='/like' element={<><Dashboard/><VideoLikes/></>}/>
-
               <Route path='/subcribe' element={<><Dashboard/><SubcribeVideo/></>}/>
-
+              <Route path='/searchpage/:searchQuery' element={<SearchPage/>}/>
               <Route path='/listvideochannel/:channelId' element={<><Dashboard/><ListVideoChannel/></>}/>
-
-              <Route path='/profile' element={<><Dashboard/><SettingProfile/></>}/>
               <Route path='/videoview/:videoId' element={<><Dashboard/><Videoview/></>}/>
           </Route>
-            </>
-        }
-
-
+          
       </Routes>
     </UserContext.Provider> 
     </>
   )
-}
-
+};

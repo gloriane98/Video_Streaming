@@ -1,11 +1,9 @@
 const User = require('../models/user')
 
-
-
-
 const createUser=(req,res,next)=>{
     const  {uid, name, picture}  = res.locals;
     const user = new User({
+        // ...req.body,
         name,
         picture, 
         uid,
@@ -31,7 +29,9 @@ const updateFacebook=(req, res)=>{
     .catch(error => res.status(400).json({error}));
 }
 const updateInstagram=(req, res)=>{
-
+    User.findOneAndUpdate({uid}, {instagram : req.body.instagram})
+    .then(()=> res.status(200).json({message : "modify!"}))
+    .catch(error => res.status(400).json({error}));
 }
 
 const findUser=(req,res,next)=>{
