@@ -15,6 +15,7 @@ const verifyToken=(req, res, next)=>{
     const token= req.headers.authorization.split(' ')[1]
 
     auth.verifyIdToken(token).then((decoded) => {
+        // console.log(decoded)
         res.locals.uid = decoded.uid;
         res.locals.name=decoded.name;
         res.locals.picture=decoded.picture;
@@ -22,8 +23,6 @@ const verifyToken=(req, res, next)=>{
     }).catch((err) => res.status(401).json({err}))
 
 }
-
-
 
 
 module.exports={verifyToken};

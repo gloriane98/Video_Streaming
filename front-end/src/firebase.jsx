@@ -20,8 +20,7 @@ provider.addScope('https://www.googleapis.com/auth/youtube.force-ssl')
 
 export const signInWithGoogle= async ()=>{
   const response = await auth.signInWithPopup(provider);
-  console.log(response);
-
+ 
   if(response) {
     window.location.href='/home';
     localStorage.setItem('image',response.additionalUserInfo.profile.picture)
