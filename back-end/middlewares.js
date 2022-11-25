@@ -9,14 +9,13 @@ admin.initializeApp({
 const auth = admin.auth()
 
 const verifyToken=(req, res, next)=>{
-    // console.log(req.headers.authorization)
     if(!req.headers.authorization){
         return res.status(401).send('Unauthorized')
     }
     const token= req.headers.authorization.split(' ')[1]
 
     auth.verifyIdToken(token).then((decoded) => {
-        console.log(decoded)
+        // console.log(decoded)
         res.locals.uid = decoded.uid;
         res.locals.name=decoded.name;
         res.locals.picture=decoded.picture;
