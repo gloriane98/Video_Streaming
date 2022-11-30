@@ -1,18 +1,21 @@
-import CommentForm from "./CommentForm";
-import './style.css'
+import React from 'react'
+import CommentForm from './CommentForm'
+import { Avatar, Stack,Grid,Box, ListItemButton } from '@mui/material';
+import { ThumbDown, ThumbUp } from '@mui/icons-material';
 
-const Comment = ({
-  comment,
-  replies,
-  setActiveComment,
-  activeComment,
-  updateComment,
-  deleteComment,
-  addComment,
-  parentId = null,
-  currentUserId,
-}) => {
-  const isEditing =
+
+export default function Comment({
+    comment,
+    replies,
+    setActiveComment,
+    activeComment,
+    updateComment,
+    deleteComment,
+    addComment,
+    parentId = null,
+    currentUserId
+}) {
+    const isEditing =
     activeComment &&
     activeComment.id === comment.id &&
     activeComment.type === "editing";
@@ -28,32 +31,39 @@ const Comment = ({
   const canEdit = currentUserId === comment.userId && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+  
   return (
-    <div key={comment.id} className="comment">
-      <div className="comment-image-container">
-        <img src="/user-icon.png" />
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.username}</div>
-          <div>{createdAt}</div>
-        </div>
-        {!isEditing && <div className="comment-text">{comment.body}</div>}
-        {isEditing && (
-          <CommentForm
-            submitLabel="Update"
-            hasCancelButton
-            initialText={comment.body}
-            handleSubmit={(text) => updateComment(text, comment.id)}
-            handleCancel={() => {
-              setActiveComment(null);
-            }}
-          />
-        )}
-        <div className="comment-actions">
+    <Stack 
+        key={comment.id} 
+        direction="row" >
+      <Box  >
+        <Avatar />
+      </Box>
+      <Stack 
+        direction="column"
+        sx={{ width:"450px"}}>
+            <Grid 
+                direction="column" >
+            <span>{comment.username}</span>&nbsp;&nbsp; 
+            <span>{createdAt}</span>
+            </Grid>
+            {!isEditing && <Stack sx={{border:"1px solid green"}}>{comment.body}</Stack>}
+            {isEditing && (
+            <CommentForm
+                submitLabel="Update"
+                hasCancelButton
+                initialText={comment.body}
+                handleSubmit={(text) => updateComment(text, comment.id)}
+                handleCancel={() => {
+                setActiveComment(null);
+                }}
+            />
+            )}
+        <Stack 
+            direction="row" 
+            justifyContent="space-between" >
           {canReply && (
             <div
-              className="comment-action"
               onClick={() =>
                 setActiveComment({ id: comment.id, type: "replying" })
               }
@@ -63,7 +73,7 @@ const Comment = ({
           )}
           {canEdit && (
             <div
-              className="comment-action"
+              
               onClick={() =>
                 setActiveComment({ id: comment.id, type: "editing" })
               }
@@ -73,13 +83,22 @@ const Comment = ({
           )}
           {canDelete && (
             <div
-              className="comment-action"
+              
               onClick={() => deleteComment(comment.id)}
             >
               Delete
             </div>
           )}
-        </div>
+          
+        </Stack>
+        <Stack direction="row">
+           <ListItemButton>
+              <ThumbUp/>
+            </ListItemButton>
+            <ListItemButton>
+              <ThumbDown/>
+            </ListItemButton>
+        </Stack>
         {isReplying && (
           <CommentForm
             submitLabel="Reply"
@@ -87,7 +106,7 @@ const Comment = ({
           />
         )}
         {replies.length > 0 && (
-          <div className="replies">
+          <Grid >
             {replies.map((reply) => (
               <Comment
                 comment={reply}
@@ -102,11 +121,10 @@ const Comment = ({
                 currentUserId={currentUserId}
               />
             ))}
-          </div>
+           
+          </Grid>
         )}
-      </div>
-    </div>
+      </Stack>
+    </Stack>
   );
-};
-
-export default Comment;
+}
