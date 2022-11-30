@@ -5,7 +5,7 @@ import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
 import ShowMoreText from "react-show-more-text"
 import {HashLink} from 'react-router-hash-link'
-import CommentBox from '../../CommentBox/CommentBox'
+import BoxComments from '../../BoxComments/CommentBox'
 
 
 
@@ -44,13 +44,14 @@ if(isError){
                 <IframeVideo videoId={videoId} />
         </div>
         <div className='comment'>
-          <CommentBox/>
+          <BoxComments/>
         </div>
         <div className='ListeVideo'>
         {
           video.items?.map((video)=>{
               const videoItem=video.snippet.channelId;
 
+              console.log(video.id.videoId)
             return(
 
           <HashLink key={video.id.videoId} className="videoCard" to={`/videoview/${video.id.videoId}#read`}>

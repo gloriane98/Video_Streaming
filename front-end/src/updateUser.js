@@ -3,7 +3,6 @@ import React , {useState, useEffect}from 'react'
 import {PhotoCamera} from '@mui/icons-material';
 import {useSnackbar } from 'notistack';
 import axios from 'axios';
-import authAxios from "../../utils/client";
 
 
 
@@ -14,7 +13,6 @@ export default function SettingProfile() {
     const [twitter, setTwitter] = useState("");
     const [message, setMessage] = useState("");
     const [picture,setPicture]=useState("");
-   
 
     const handleusername = (event) => {
         const name = event.target.value;
@@ -34,32 +32,43 @@ export default function SettingProfile() {
         const twitter = event.target.value;
         setTwitter(twitter);
       };
-      const handlePicture=(event)=>{
+
+ /*      const handlePicture=(event)=>{
         const picture= event.target.value;
         setPicture(picture);
       }
-      // const uid= localStorage.getItem('uid')
-      const _id= localStorage.getItem('id')
-
+    const submitPicture=async(e) =>{
+        e.preventDefault();
+        const newPicture ={
+            picture:picture
+        };
+        await axios
+        .post(
+          `import.meta.env.VITE_APP_URL/user/update`,
+          JSON.stringify(newPicture)
+        )
+        .then((result) => {
+          console.log(result);
+        });
+    } */
       const submitUser = async (e) => {
         e.preventDefault();
         const userdata = {
-          // _id:_id,
-          // uid:uid,
           name: name,
-          picture:picture,
           facebook: facebook,
           instagram: instagram,
           twitter: twitter,
         };
-       
-        authAxios().then(async(axios)=>{
-            const res = await axios.put(`/user/update/${_id}`,userdata)
-            // console.log(res)
-            // localStorage.setItem('uid', res.data.uid)
-            localStorage.setItem('id', res.data._id)
-          })
-      
+        await axios
+          .post(
+            `import.meta.env.VITE_APP_URL/user/update`,
+            JSON.stringify(userdata)
+          )
+          .then((result) => {
+            setMessage(result.data.msg);
+            console.log(result.data);
+            console.log(result.data.msg);
+          });
       };
     const styles={
         positionForm:{
@@ -108,13 +117,13 @@ export default function SettingProfile() {
             </Grid>
             <Grid pt={2}>
                <form method='post' 
-               onSubmit={submitUser}
+            //    onSubmit={submitPicture}
                >
                     <input 
                     accept="image/*" 
                     id="icon-button-file"
                     type="file" style={{ display: 'none' }}
-                    onChange={(e)=> handlePicture(e)}
+                    // onChange={(e)=> handlePicture(e)}
                      />
                         <label htmlFor="icon-button-file">
                             <IconButton color="#007464" aria-label="upload picture"
