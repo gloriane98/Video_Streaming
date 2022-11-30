@@ -3,9 +3,10 @@ const User = require("../models/user");
 const createUser = (req, res, next) => {
   const { uid, name, picture } = res.locals;
   const user = new User({
+    uid,
     name,
     picture,
-    uid,
+    ...req.body
   });
   user
     .save()
@@ -28,7 +29,40 @@ const findUser = (req, res, next) => {
     .catch((error) => res.status(404).json({ error }));
 };
 
-const updateUserUsername = (req, res, next) => {
+const updateUser= async(req,res)=>{
+  // const uid = res.locals.uid;
+  const _id=req.params.id;
+  const {name,picture, facebook, instagram, twitter} = req.body;
+  if(!req.body){
+    return res
+    .status(400)
+    .send({message:"Data to update can not be empty"})
+  }
+  User.findOneAndUpdate(
+    _id, 
+    {
+      name:name,
+      picture:picture,
+      facebook:facebook,
+      instagram:instagram,
+      twitter:twitter}, 
+    {new:true,returnOriginal: false }, )
+  .then(data =>{
+    if(!data){
+      res.status(404)
+      .send({message:`Can not update user with ${uid}.May be user not found `})
+    }else{
+      res.status(200).send(data)
+      console.log(data)
+    }
+  })
+  .catch(err=>{
+    console.log(err)
+  })
+}
+
+
+/* const updateUserUsername = (req, res, next) => {
   User.findOneAndUpdate({ uid }, { name: req.locals.name })
     .then(() => res.status(200).json({ message: "modify!" }))
     .catch((error) => res.status(400).json({ error }));
@@ -48,10 +82,12 @@ const updateInstagram = (req, res) => {
     .then(() => res.status(200).json({ message: "modify!" }))
     .catch((error) => res.status(400).json({ error }));
 };
-
+ */
 module.exports = {
   createUser,
-  updateUserUsername,
   findUser,
-  updateUserPicture,
+  updateUser
+  // updateUserUsername,
+  // updateUserPicture,
+  
 };

@@ -6,8 +6,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import {Link} from 'react-router-dom'
-
-
+import authAxios from '../../utils/client';
+import { useEffect } from 'react';
 const UserImage = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -19,6 +19,19 @@ const UserImage = () => {
   };
  
 let userImg=window.localStorage.getItem('image')
+
+const getUser=()=>{
+  authAxios().then(async(axios)=>{
+    const user = await axios.get(`/user`)
+    // console.log(user)
+    localStorage.setItem('name', user.data.name)
+  })
+}
+
+useEffect(()=>{
+  getUser()
+},[])
+const name= localStorage.getItem('name');
 
   return (
     <>
@@ -76,6 +89,7 @@ let userImg=window.localStorage.getItem('image')
           <ListItemIcon>
             <FacebookIcon/>
           </ListItemIcon>
+            {/* {facebook} */}
           Facebook
         </MenuItem>
         <Divider />
@@ -100,7 +114,7 @@ let userImg=window.localStorage.getItem('image')
         </Link>
         <Divider />
         <MenuItem>
-          <Typography>Gloriane Kingolo</Typography>
+          <Typography>{name}</Typography>
         </MenuItem>
         <Divider />
         <MenuItem>

@@ -9,7 +9,7 @@ const authAxios = async () => {
       Authorization: `Bearer ${idToken}`,
     },
   });
-  console.log(instance.options)
+  // console.log(instance.options)
   return instance
 };
 
