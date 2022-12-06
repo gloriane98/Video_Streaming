@@ -12,6 +12,5 @@ const {
 routes.post('/', verifyToken, createUser)
 routes.get('/', verifyToken, findUser)
 routes.put('/update/:id',verifyToken, updateUser)
-// routes.put('/', verifyToken,updateUserPicture)
 
 module.exports=routes;

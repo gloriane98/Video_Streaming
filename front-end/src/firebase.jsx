@@ -23,7 +23,6 @@ export const signInWithGoogle= async ()=>{
  
   if(response) {
     window.location.href='/home';
-    localStorage.setItem('image',response.additionalUserInfo.profile.picture)
     localStorage.setItem('token', response.credential.accessToken)
   }
 }

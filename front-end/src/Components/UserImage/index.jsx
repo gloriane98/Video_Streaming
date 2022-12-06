@@ -19,12 +19,15 @@ const UserImage = () => {
   };
  
 let userImg=window.localStorage.getItem('image')
+localStorage.removeItem('image')
+localStorage.removeItem('facebook')
 
 const getUser=()=>{
   authAxios().then(async(axios)=>{
     const user = await axios.get(`/user`)
-    // console.log(user)
+    console.log(user)
     localStorage.setItem('name', user.data.name)
+    localStorage.setItem('image', user.data.picture)
   })
 }
 

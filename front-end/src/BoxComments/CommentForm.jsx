@@ -1,21 +1,46 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {TextField,Button,Stack,Paper} from '@mui/material'
+import authAxios from "../utils/client"
+import { useParams } from 'react-router-dom';
 
 export default function CommentForm({
     handleSubmit,
     submitLabel,
     hasCancelButton = false,
     handleCancel,
-    initialText = "",
 }) {
-    const [text, setText] = useState(initialText);
-    const isTextareaDisabled = text.length === 0;
+    const [message, setMessage]=useState("");
+    const isTextareaDisabled = message.length === 0;
+    const videoId=useParams()
+    // console.log(videoId);
+
     const onSubmit = (event) => {
       event.preventDefault();
-      handleSubmit(text);
-      setText("");
+      setMessage("")
+      handleSubmit(message);
+
+      const commentData={
+          // userId:id,
+          videoId:videoId,
+          description:message,
+          // replies:[{
+          //   description:message
+          // }],
+          // likeCount:[{
+          //   count:count
+          // }],
+          // dislikeCount:[{
+          //   count:count
+          // }]
+
+      }
+      authAxios().then(async(axios)=>{
+        const response=await axios.post(`/comments`, commentData)
+        console.log(response);
+      })
     };
+
   return (
     <>
       <form action="" onSubmit={onSubmit}>
@@ -27,8 +52,8 @@ export default function CommentForm({
                     label="Add Comment"
                     variant="standard"
                     sx={{width:"600px"}}
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    value={message} 
+                    onChange={e => setMessage(e.target.value)}
                     >
                 </TextField>
                 <Button 

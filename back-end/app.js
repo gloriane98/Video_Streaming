@@ -1,9 +1,9 @@
 const express= require('express');
 const app = express();
 const mongoose= require('./config/db')
-const upload=require('./profile/multer')
-const cloudinary=require('./profile/cloudinary')
-const fs= require('fs')
+// const upload=require('./profile/multer')
+// const cloudinary=require('./profile/cloudinary')
+// const fs= require('fs')
 const cors=require('cors')
 
 const RoutesUser= require('./routes/userRoute')

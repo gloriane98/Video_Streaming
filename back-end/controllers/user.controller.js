@@ -30,7 +30,6 @@ const findUser = (req, res, next) => {
 };
 
 const updateUser= async(req,res)=>{
-  // const uid = res.locals.uid;
   const _id=req.params.id;
   const {name,picture, facebook, instagram, twitter} = req.body;
   if(!req.body){
@@ -60,34 +59,9 @@ const updateUser= async(req,res)=>{
     console.log(err)
   })
 }
-
-
-/* const updateUserUsername = (req, res, next) => {
-  User.findOneAndUpdate({ uid }, { name: req.locals.name })
-    .then(() => res.status(200).json({ message: "modify!" }))
-    .catch((error) => res.status(400).json({ error }));
-};
-const updateUserPicture = (req, res) => {
-  User.findOneAndUpdate({ uid }, { picture: req.locals.picture })
-    .then(() => res.status(200).json({ message: "modify!" }))
-    .catch((error) => res.status(400).json({ error }));
-};
-const updateFacebook = (req, res) => {
-  User.findOneAndUpdate({ uid }, { facebook: req.body.facebook })
-    .then(() => res.status(200).json({ message: "modify!" }))
-    .catch((error) => res.status(400).json({ error }));
-};
-const updateInstagram = (req, res) => {
-  User.findOneAndUpdate({ uid }, { instagram: req.body.instagram })
-    .then(() => res.status(200).json({ message: "modify!" }))
-    .catch((error) => res.status(400).json({ error }));
-};
- */
 module.exports = {
   createUser,
   findUser,
   updateUser
-  // updateUserUsername,
-  // updateUserPicture,
-  
+
 };

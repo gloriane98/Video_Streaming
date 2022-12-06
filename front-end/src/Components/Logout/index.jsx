@@ -22,6 +22,9 @@ const Logout = () => {
     setUserToken(null)
     localStorage.removeItem('image')
     localStorage.removeItem('token')
+    localStorage.removeItem('uid')
+    localStorage.removeItem('id')
+    localStorage.removeItem('name')
     navigate("/")
 
   }

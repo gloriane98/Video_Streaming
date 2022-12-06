@@ -3,17 +3,28 @@ const mongoose=require('mongoose')
 const Schema=mongoose.Schema;
 
 const commentSchema=new Schema({
-    // uid:{type:String, required:true, unique:true},
     userId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"userModel"
+        type:String
     },
     videoId:{type:String, required:true,
-        //  unique:true
+         unique:true
         },
     description:{type:String},
-    likes:[],
-    dislikes:[],
+    replies:[{
+        id:Number,
+        description:String,
+        type:String
+    },{
+        timestamps:true
+    }],
+    likeCount:{
+        type:Number,
+        default:0
+    },
+    dislikeCount:[{
+        type:Number,
+        default:0
+    }],
 
 },{
     timestamps:true

@@ -9,7 +9,7 @@ const createComment= async(req,res,next)=>{
     .then(() => 
     console.log(),
     // res.status(201).json({ message: "success" })
-    res.status(201).send()
+    res.status(201).json({message:""})
 
     )
     .catch((error)=> res.status(400).json({ error }))

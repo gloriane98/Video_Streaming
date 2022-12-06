@@ -15,7 +15,7 @@ const Dashboard = () => {
       const res = await axios.get("/user");
       // console.log(res)
     })
-  }, [])
+  }, []) 
 
   return (
     <div className="detailscontainer">

@@ -12,9 +12,10 @@ export default function SettingProfile() {
     const [facebook, setFaceook] = useState("");
     const [instagram, setInstagram] = useState("");
     const [twitter, setTwitter] = useState("");
-    const [message, setMessage] = useState("");
     const [picture,setPicture]=useState("");
    
+    const pictureUser=localStorage.getItem('image')
+
 
     const handleusername = (event) => {
         const name = event.target.value;
@@ -44,8 +45,6 @@ export default function SettingProfile() {
       const submitUser = async (e) => {
         e.preventDefault();
         const userdata = {
-          // _id:_id,
-          // uid:uid,
           name: name,
           picture:picture,
           facebook: facebook,
@@ -55,8 +54,6 @@ export default function SettingProfile() {
        
         authAxios().then(async(axios)=>{
             const res = await axios.put(`/user/update/${_id}`,userdata)
-            // console.log(res)
-            // localStorage.setItem('uid', res.data.uid)
             localStorage.setItem('id', res.data._id)
           })
       
@@ -69,7 +66,7 @@ export default function SettingProfile() {
     
         }
     }
-    
+
   const { enqueueSnackbar } = useSnackbar();
   const handleClickVariant = (variant) => () => {
     enqueueSnackbar('This is a success message!', { variant });
@@ -102,7 +99,10 @@ export default function SettingProfile() {
            >Profile User</Typography>
             <Grid
             pt={2}>
-                <Avatar sx={{ width: 200, height: 200 }}>
+                <Avatar 
+                sx={{ width: 200, height: 200 }}
+                src={pictureUser}
+                >
 
                 </Avatar>
             </Grid>

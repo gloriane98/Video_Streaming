@@ -51,7 +51,6 @@ if(isError){
           video.items?.map((video)=>{
               const videoItem=video.snippet.channelId;
 
-              console.log(video.id.videoId)
             return(
 
           <HashLink key={video.id.videoId} className="videoCard" to={`/videoview/${video.id.videoId}#read`}>
