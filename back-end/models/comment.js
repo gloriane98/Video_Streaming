@@ -1,35 +1,38 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
-const Schema=mongoose.Schema;
-
-const commentSchema=new Schema({
-    userId:{
-        type:String
+const commentSchema = mongoose.Schema({
+    videoID: {
+        type: String
     },
-    videoId:{type:String, required:true,
-         unique:true
+    userID:{
+        type: mongoose.Schema.Types.ObjectId, ref: "user"
+    },
+    comments: {
+        type: [{
+            commentID: String,
+            userName: String,
+            description: String,
+            timestamp: Number
+        }],
+        replies: {
+            type: [{
+                commentaireID: String,
+                userName: String,
+                description: String,
+                timestamps: Number
+            }]
         },
-    description:{type:String},
-    replies:[{
-        id:Number,
-        description:String,
-        type:String
-    },{
-        timestamps:true
-    }],
-    likeCount:{
-        type:Number,
-        default:0
     },
-    dislikeCount:[{
-        type:Number,
-        default:0
-    }],
+    likes: [String],
+    tags: [{
+        commentID: String,
+        userName: String,
+        description: String,
+        timestamps: Number
+    }]
 
-},{
-    timestamps:true
+}, {
+    timestamps: true,
 })
 
-const commentModel = mongoose.model('comments', commentSchema)
-
-module.exports= commentModel;
+module.exports = mongoose.model('comments', commentSchema)

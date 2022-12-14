@@ -1,26 +1,119 @@
-const Comment=require('../models/comment');
+const postModel = require('../models/comment')
+const userModel = require('../models/user')
+const ObjectID = require('mongoose').Types.ObjectId;
 
-const createComment= async(req,res,next)=>{
-    const comment= new Comment({
-        ...req.body
-    })
-    comment
-    .save()
-    .then(() => 
-    console.log(),
-    // res.status(201).json({ message: "success" })
-    res.status(201).json({message:""})
-
-    )
-    .catch((error)=> res.status(400).json({ error }))
+const readPost = (req, res) => {
+    postModel.find((err, docs) => {
+        if (!err) res.send(docs);
+        else console.log('Erreur to get data : ', +err)
+    }).sort({ createdAt: -1 });
 };
 
-const updateComment= async(req,res, next)=>{
-    return req.body;
-};
-
-const deleteComment=async(req,res,next)=>{
-    return {}
+const getPostByVideoId = async(req, res) => {
+    try {
+        postModel.findOne({ videoID: new RegExp('^' + req.body.videoID + '$', "i") }, (err, doc) => {
+            if (!err) {
+                if (doc) {
+                    return res.status(200).json(doc._id)
+                } else {
+                    postModel.create({
+                            videoID: req.body.videoID,
+                        })
+                        .then(resp => {
+                            res.status(201).json(resp._id)
+                        })
+                        .catch(err => {
+                            return res.status(500).json('Erreur interne du serveur')
+                        })
+                }
+            }
+        })
+    } catch (err) {
+        return res.status(400).send({ message: err })
+    }
 }
 
-module.exports={createComment,updateComment,deleteComment}
+const addComment = async(req, res) => {
+    if (!ObjectID.isValid(req.params.id)) {
+        return res.status(400).send('ID inconnu : ' + req.params.id)
+    } else {
+        try {
+            return postModel.findByIdAndUpdate(
+                    req.params.id, {
+                        $push: {
+                            comments: {
+                                commentID: req.body.commentID,
+                                userName: req.body.userName,
+                                description: req.body.description,
+                                timestamp: new Date()
+                            }
+                        }
+                    }, { new: true }
+                )
+                .then((docs) => {
+                    res.status(201).send({
+                        message: 'comment add on success',
+                        data: docs
+                    })
+                })
+                .catch((err) => { return res.status(400).send({ message: err }) })
+        } catch (err) {
+            return res.status(400).send({ message: err })
+        }
+    }
+}
+
+const likePost = (req, res) => {
+    if (!ObjectID.isValid(req.params.id)) {
+        return res.status(400).send('ID invalid : ' + req.params.id)
+    } else {
+        try {
+            postModel.findByIdAndUpdate(req.params.id, { $addToSet: { likes: req.body.id } }, { new: true })
+                .then((docs) => { res.status(200).send(docs) })
+                .catch((err) => { return res.status(500).send({ message: err }) })
+
+            userModel.findByIdAndUpdate(req.body.id, { $addToSet: { likes: req.params.id } }, { new: true })
+        } catch (err) {
+            return res.status(400).send({ message: err })
+        }
+    }
+}
+
+const unlikePost = async(req, res) => {
+    if (!ObjectID.isValid(req.params.id)) {
+        return res.status(400).send('ID invalid : ' + req.params.id)
+    } else {
+        try {
+            postModel.findByIdAndUpdate(req.params.id, { $pull: { likes: req.body.id } }, { new: true })
+                .then((docs) => { res.status(200).send(docs) })
+                .catch((err) => { return res.status(400).send({ message: err }) })
+
+            userModel.findByIdAndUpdate(req.body.id, { $pull: { likes: req.params.id } }, { new: true })
+        } catch (err) {
+            return res.status(400).send({ message: err })
+        }
+    }
+}
+
+
+const replyPost = async(req, res) => {
+    try {
+        const posts = await postModel.find().sort({ updatedAt: -1 })
+
+        posts.map(val => {
+            return res.json(val.comments)
+        })
+    } catch (error) {
+
+    }
+}
+
+
+module.exports = {
+    getPostByVideoId,
+    likePost,
+    unlikePost,
+    replyPost,
+    addComment,
+    readPost
+}

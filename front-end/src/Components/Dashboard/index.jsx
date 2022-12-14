@@ -7,6 +7,7 @@ const Dashboard = () => {
   useEffect(() => {
     authAxios().then(async (axios) => {
       const response = await axios.post("/user");
+      // console.log(response)
     });
   }, []);
 

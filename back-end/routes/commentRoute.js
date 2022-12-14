@@ -1,13 +1,12 @@
-const express=require('express');
-const routes=express.Router();
+const router = require('express').Router()
 
-const {
-    createComment,
-    updateComment,
-    deleteComment}=require('../controllers/comment.controller')
+const postModel = require('../controllers/comment.controller')
 
-    routes.post('/', createComment)
-    // routes.put('/',updateComment)
-    // routes.delete('/', deleteComment)
+router.get('/', postModel.readPost);
+router.post('/', postModel.getPostByVideoId)
+router.patch('/likeVideo/:id', postModel.likePost)
+router.patch('/unLikeVideo/:id', postModel.unlikePost)
+router.post('/commentSousComment/', postModel.replyPost)
+router.patch('/comment-post/:id', postModel.addComment)
 
-    module.exports=routes;
+module.exports = router

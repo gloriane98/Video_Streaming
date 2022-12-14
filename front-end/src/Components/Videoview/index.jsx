@@ -5,13 +5,16 @@ import IframeVideo from '../IframeVideo'
 import { Link } from 'react-router-dom'
 import ShowMoreText from "react-show-more-text"
 import {HashLink} from 'react-router-hash-link'
-import BoxComments from '../../BoxComments/CommentBox'
+import axios from 'axios';
+import BoxComments from '../../BoxComments/CommentForm'
+import PageError from '../PageError'
 
 
 
 
 const Videoview = () => {
   let {videoId}= useParams();
+  // console.log(videoId)
   const [video, setVideo] = useState([])
 const [loading,setLoading]=useState(true)
 let token = window.localStorage.getItem('token')
@@ -35,7 +38,6 @@ useEffect(()=>{
 if(isError){
   return( <PageError/>)
 }
-
   return (
     <>
  
@@ -45,6 +47,7 @@ if(isError){
         </div>
         <div className='comment'>
           <BoxComments/>
+          
         </div>
         <div className='ListeVideo'>
         {

@@ -23,8 +23,6 @@ const ListVideoChannel = () => {
         .then(data =>{
             setVideoChannel(data.items)
             setIsLoading(false)
-            console.log(data.items);
-
         })
         .catch(()=> setIsError(true))
     },[])

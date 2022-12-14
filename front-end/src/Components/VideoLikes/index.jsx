@@ -41,9 +41,7 @@ const VideoLikes = () => {
             videos.items?.map((video)=>{
                 const titleVideo = video.snippet.localized.title
                 const datePublish =video.snippet.publishedAt;
-                const views = video.statistics.viewCount;
-                console.log(views)
-               
+                const views = video.statistics.viewCount;               
                 const videoItem=video.snippet.channelId;
 
             return(

@@ -1,112 +1,123 @@
-import CommentForm from "./CommentForm";
-import './styles.css'
+import React from 'react'
+import { useState, useEffect } from 'react'
+import {Button,Stack,Paper,Avatar, Typography} from '@mui/material'
+import axios from 'axios'
+import { useParams } from 'react-router-dom';
+import {ThumbUp,ThumbDown} from '@mui/icons-material'
+import moment from "moment"
 
-const Comment = ({
-  comment,
-  replies,
-  setActiveComment,
-  activeComment,
-  updateComment,
-  deleteComment,
-  addComment,
-  parentId = null,
-  currentUserId,
-}) => {
-  const isEditing =
-    activeComment &&
-    activeComment.id === comment.id &&
-    activeComment.type === "editing";
-  const isReplying =
-    activeComment &&
-    activeComment.id === comment.id &&
-    activeComment.type === "replying";
-  const fiveMinutes = 300000;
-  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
-  const canDelete =
-    currentUserId === comment.userId && replies.length === 0 && !timePassed;
-  const canReply = Boolean(currentUserId);
-  const canEdit = currentUserId === comment.userId && !timePassed;
-  const replyId = parentId ? parentId : comment.id;
-  const createdAt = new Date(comment.createdAt).toLocaleDateString();
-  return (
-    <div key={comment.id} className="comment">
-      <div className="comment-image-container">
-        <img src="/user-icon.png" />
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.username}</div>
-          <div>{createdAt}</div>
-        </div>
-        {!isEditing && <div className="comment-text">{comment.body}</div>}
-        {isEditing && (
-          <CommentForm
-            submitLabel="Update"
-            hasCancelButton
-            initialText={comment.body}
-            handleSubmit={(text) => updateComment(text, comment.id)}
-            handleCancel={() => {
-              setActiveComment(null);
-            }}
-          />
-        )}
-        <div className="comment-actions">
-          {canReply && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "replying" })
-              }
-            >
-              Reply
-            </div>
-          )}
-          {canEdit && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "editing" })
-              }
-            >
-              Edit
-            </div>
-          )}
-          {canDelete && (
-            <div
-              className="comment-action"
-              onClick={() => deleteComment(comment.id)}
-            >
-              Delete
-            </div>
-          )}
-        </div>
-        {isReplying && (
-          <CommentForm
-            submitLabel="Reply"
-            handleSubmit={(text) => addComment(text, replyId)}
-          />
-        )}
-        {replies.length > 0 && (
-          <div className="replies">
-            {replies.map((reply) => (
-              <Comment
-                comment={reply}
-                key={reply.id}
-                setActiveComment={setActiveComment}
-                activeComment={activeComment}
-                updateComment={updateComment}
-                deleteComment={deleteComment}
-                addComment={addComment}
-                parentId={comment.id}
-                replies={[]}
-                currentUserId={currentUserId}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+export default function Comment() {
+    const {videoId}=useParams()
+    
+    const [posts, setPosts] = useState([]);
+    
+  
+    
+    
+    
+    const getAllPosts = () => {
+      axios.get("http://localhost:8000/api/posts")
+        .then(resp => {
+          setPosts(resp.data)
+          console.log(resp.data);
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    
+    useEffect(() => {
+      getAllPosts();
+    }, [])
+// liked fonctionnality
+const [likeCount, setLikeCount] = useState(0);
+const [dislikeCount, setDislikeCount] = useState(0);
+const [activeBtn, setActiveBtn] = useState("none");
+
+const handleLikeClick = () => {
+  if (activeBtn === "none") {
+    setLikeCount(likeCount + 1);
+    setActiveBtn("like");
+    return;
+  }
+
+  if (activeBtn==='like'){
+    setLikeCount(likeCount - 1);
+    setActiveBtn("none");
+    return;
+  }
+
+  if (activeBtn === "dislike") {
+    setLikeCount(likeCount + 1);
+    setDislikeCount(dislikeCount - 1);
+    setActiveBtn("like");
+  }
 };
 
-export default Comment;
+const handleDisLikeClick = () => {
+  if (activeBtn === "none") {
+    setDislikeCount(dislikeCount + 1);
+    setActiveBtn("dislike");
+    return;
+  }
+ 
+  if (activeBtn === 'dislike'){
+    setDislikeCount(dislikeCount - 1);
+    setActiveBtn("none");
+    return;
+  }
+
+  if (activeBtn === "like") {
+    setDislikeCount(dislikeCount + 1);
+    setLikeCount(likeCount - 1);
+    setActiveBtn("dislike");
+  }
+};
+  return (
+    <>
+    <Stack direction="column">
+        {
+          posts && posts.map(videoComment => {
+            if (videoComment.videoID === videoId) {
+              return (
+
+                <>
+                  <Stack direction="column">
+
+                    {videoComment.comments && videoComment.comments.map(val => {
+                      return (
+                        <Stack spacing={2}>
+                          <Stack  direction='row' spacing={2} mt={2} >
+                            <div className="img">  <Avatar /> </div>
+                            <div className="userName">
+                              <span>{val.userName}</span>
+                              {" "}
+                              {" "}
+                              <span>
+                               {moment(val.timestamp).fromNow()}
+                              </span>
+                            </div>
+                          </Stack>
+                           <Typography>{val.description}</Typography>
+                          <Stack direction="row"  justifyContent="space-between">
+                              <div className="like" onClick={handleLikeClick}><ThumbUp />{likeCount} </div>
+                              <div className="dislike" onClick={handleDisLikeClick}><ThumbDown />{dislikeCount} </div>
+                              <div className="response"> <Button className="btn btn-info text-white">Reply</Button></div>
+
+                              <div className="subComment"></div>
+                          </Stack>
+                        </Stack>
+                      )
+                    })}
+                  </Stack>
+
+                </>
+              )
+            }
+          })
+        }
+
+      </Stack>  
+    </>
+  )
+}

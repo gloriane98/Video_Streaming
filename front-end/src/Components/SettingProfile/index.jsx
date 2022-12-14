@@ -39,8 +39,8 @@ export default function SettingProfile() {
         const picture= event.target.value;
         setPicture(picture);
       }
-      // const uid= localStorage.getItem('uid')
-      const _id= localStorage.getItem('id')
+
+      const _id= sessionStorage.getItem('id')
 
       const submitUser = async (e) => {
         e.preventDefault();
@@ -54,7 +54,8 @@ export default function SettingProfile() {
        
         authAxios().then(async(axios)=>{
             const res = await axios.put(`/user/update/${_id}`,userdata)
-            localStorage.setItem('id', res.data._id)
+            sessionStorage.setItem('id', res.data._id)
+            console.log(res)
           })
       
       };
