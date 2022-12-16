@@ -10,7 +10,7 @@ const authAxios = async () => {
     },
   });
   // console.log(instance.options)
-  return instance
+  return instance;
 };
 
-export default authAxios
+export default authAxios;

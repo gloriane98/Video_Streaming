@@ -1,6 +1,3 @@
+const imageUpload = (req, res, next) => {};
 
-const imageUpload = (req,res, next)=>{
-
-}
-
-module.exports={imageUpload};
+module.exports = { imageUpload };

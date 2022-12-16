@@ -8,15 +8,15 @@ const Dashboard = () => {
     authAxios().then(async (axios) => {
       const response = await axios.post("/user");
       // console.log(response)
-    });
+    }).catch(err=> console.log(err));
   }, []);
 
   useEffect(() => {
-    authAxios().then(async(axios)=>{
+    authAxios().then(async (axios) => {
       const res = await axios.get("/user");
       // console.log(res)
-    })
-  }, []) 
+    }).catch(err=> console.log(err));
+  }, []);
 
   return (
     <div className="detailscontainer">

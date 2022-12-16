@@ -1,8 +1,7 @@
-.detailscontainer{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.detailscontainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-@media screen and (max-width:768){
-    
+@media screen and (max-width: 768) {
 }

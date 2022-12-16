@@ -29,14 +29,10 @@
     transform: rotate(1800deg);
   }
 }
-.position-load{
+.position-load {
   display: flex;
   height: 80vh;
-  width:100vw;
+  width: 100vw;
   justify-content: center;
   align-items: center;
- 
 }
-
- 
-  

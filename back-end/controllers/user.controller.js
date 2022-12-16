@@ -6,7 +6,7 @@ const createUser = (req, res, next) => {
     uid,
     name,
     picture,
-    ...req.body
+    ...req.body,
   });
   user
     .save()
@@ -29,39 +29,41 @@ const findUser = (req, res, next) => {
     .catch((error) => res.status(404).json({ error }));
 };
 
-const updateUser= async(req,res)=>{
-  const _id=req.params.id;
-  const {name,picture, facebook, instagram, twitter} = req.body;
-  if(!req.body){
-    return res
-    .status(400)
-    .send({message:"Data to update can not be empty"})
+const updateUser = async (req, res) => {
+  const _id = req.params.id;
+  const { name, picture, facebook, instagram, twitter } = req.body;
+  if (!req.body) {
+    return res.status(400).send({ message: "Data to update can not be empty" });
   }
   User.findOneAndUpdate(
-    _id, 
+    _id,
     {
-      name:name,
-      picture:picture,
-      facebook:facebook,
-      instagram:instagram,
-      twitter:twitter}, 
-    {new:true,returnOriginal: false }, )
-  .then(data =>{
-    if(!data){
-      res.status(404)
-      .send({message:`Can not update user with ${uid}.May be user not found `})
-    }else{
-      res.status(200).send(data)
-      console.log(data)
-    }
-  })
-  .catch(err=>{
-    console.log(err)
-  })
-}
+      name: name,
+      picture: picture,
+      facebook: facebook,
+      instagram: instagram,
+      twitter: twitter,
+    },
+    { new: true, returnOriginal: false }
+  )
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({
+            message: `Can not update user with ${uid}.May be user not found `,
+          });
+      } else {
+        res.status(200).send(data);
+      }
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 module.exports = {
   createUser,
   findUser,
-  updateUser
-
+  updateUser,
 };

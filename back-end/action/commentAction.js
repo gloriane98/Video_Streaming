@@ -1,24 +1,28 @@
 const Comment = require("../models/comment");
 const ObjectID = require('mongoose').Types.ObjectId;
-const action=require('../action/commentAction');
 
 //create comment in database
-const createComment = (req, res, next) => {
-    action.createComment(
-        { ...req.body },
-        (data) => {
-          res.status(201).json({
-            message: "comment saved successfully!",
-           /*  data: data, */
-          });
-        },
-        (error) => {
-          res.status(400).json({
-            error: error,
-          });
-    
-  });
+const createComment = (data, funReussi, funReussiError) => {
+  const postComment = new Comment({...data});
+    console.log(data);
+    postComment
+      .save()
+      .then((comment) => funReussi(comment))
+      .catch((error) => funReussiError(error));
 };
+
+//retrieve all comments
+const getAllComment=(req,res,next)=>{
+    Comment.find()
+    .then((comments) => {
+        res.status(200).json(comments);
+      })
+      .catch((error) => {
+        res.status(400).json({
+          error: error,
+        });
+      });
+}
 
 //add Replies
 const addReply=async(req,res,next)=>{
@@ -53,20 +57,6 @@ const addReply=async(req,res,next)=>{
         }
     }
 }
-//retrieve all comments
-const getAllComment=(req,res,next)=>{
-    Comment.find()
-    .populate("userID")
-    .then((comments) => {
-        res.status(200).json(comments);
-      })
-      .catch((error) => {
-        res.status(400).json({
-          error: error,
-        });
-      });
-}
-
 module.exports = {
   createComment,
   addReply,
