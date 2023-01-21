@@ -1,37 +1,17 @@
 const mongoose = require("mongoose");
 
-const ReplySchema = mongoose.Schema({
-        commentID: String,
-        userName: String,
-        description: String,
-        userID: {type: mongoose.Schema.Types.ObjectId,ref:"user"},
-        timestamps: Number,
-});
-
 const commentSchema = mongoose.Schema(
   {
-    videoID: {type:String},
-    description:  {type:String},
-    userName:{type:String},
-    userID: {type: mongoose.Schema.Types.ObjectId,ref: "user"},
-    replies:[ReplySchema],
-    timestamps: Number,
-    likes: [{
-        count: {type:String}
-    }],
-    tags: [
-      {
-        commentID: String,
-        userTagsName: String,
-        textCommented: String,
-        videoID:String,
-        timestamps: Number,
-      },
-    ],
+    message: { type: String, required: true },
+    videoId: { type: String },
+    userId: { type: String },
+    userName: { type: String },
+    userImage: { type: String },
+    parentComment: { type: String, default: null },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("comments", commentSchema);
+module.exports = mongoose.model("Comments", commentSchema);

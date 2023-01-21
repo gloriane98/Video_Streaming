@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
     .then((decoded) => {
       // console.log(decoded)
       res.locals.uid = decoded.uid;
-      res.locals.name = decoded.name;
+      res.locals.userName = decoded.name;
       res.locals.picture = decoded.picture;
       next();
     })

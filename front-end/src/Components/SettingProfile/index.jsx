@@ -8,63 +8,59 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { PhotoCamera } from "@mui/icons-material";
 import { useSnackbar } from "notistack";
 import axios from "axios";
 import authAxios from "../../utils/client";
 
 export default function SettingProfile() {
-  const [name, setName] = useState("");
-  const [facebook, setFaceook] = useState("");
-  const [instagram, setInstagram] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [picture, setPicture] = useState("");
+ const [user,setUser]=useState({
+      userName: " ",
+      picture: " ",
+      facebook: " ",
+      instagram: " ",
+      twitter: " ",
+ })
 
-  const pictureUser = localStorage.getItem("image");
+  const userId = localStorage.getItem("userId");
+ 
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [picture, setPicture] = useState(null)
+ 
+  const ref = useRef()
+  const handleClick = (e) => {
+     ref.current.click()
+  }
+  useEffect(() => {
+    if (selectedImage) {
+      setPicture(URL.createObjectURL(selectedImage))
+    }
+ }, [selectedImage])
 
-  const handleusername = (event) => {
-    const name = event.target.value;
-    setName(name);
-  };
-
-  const handleFacebook = (event) => {
-    const facebook = event.target.value;
-    setFaceook(facebook);
-  };
-
-  const handleInsta = (event) => {
-    const insta = event.target.value;
-    setInstagram(insta);
-  };
-  const handleTwitter = (event) => {
-    const twitter = event.target.value;
-    setTwitter(twitter);
-  };
-  const handlePicture = (event) => {
-    const picture = event.target.value;
-    setPicture(picture);
-  };
-
-  const _id = sessionStorage.getItem("id");
 
   const submitUser = async (e) => {
     e.preventDefault();
     const userdata = {
-      name: name,
-      picture: picture,
-      facebook: facebook,
-      instagram: instagram,
-      twitter: twitter,
+      userId:userId,
+      userName: user.userName,
+      picture: user.picture,
+      facebook: user.facebook,
+      instagram: user.instagram,
     };
 
     authAxios().then(async (axios) => {
-      const res = await axios.put(`/user/update/${_id}`, userdata);
-      localStorage.setItem("id", res.data._id);
+      const res = await axios.put(`/user/update/${userId}`, userdata);
       console.log(res)
-      console.log(res.data._id);
+      
     });
   };
+  const handleChange = (event) => {
+    setUser(event.target.value)
+    
+  }
+  // console.log({setUser});
+  // console.log({setSelectedImage})
   const styles = {
     positionForm: {
       display: "flex",
@@ -73,10 +69,6 @@ export default function SettingProfile() {
     },
   };
 
-  const { enqueueSnackbar } = useSnackbar();
-  const handleClickVariant = (variant) => () => {
-    enqueueSnackbar("This is a success message!", { variant });
-  };
 
   return (
     <>
@@ -102,46 +94,54 @@ export default function SettingProfile() {
           >
             Profile User
           </Typography>
+         
+            <div className="image" htmlFor="selected-image">
+               {picture && selectedImage ? (
+                  <Avatar
+                     sx={{ width: 200, height: 200 }} 
+                     src={picture}
+                     alt={selectedImage.name}
+                     className="profile"
+                  />
+               ) : (
+                  <Avatar
+                     sx={{ width: 200, height: 200 }} 
+                     src={user.picture}
+                     alt="profile-picture"
+                  />
+               )}
+            </div>
           <Grid pt={2}>
-            <Avatar sx={{ width: 200, height: 200 }} src={pictureUser}></Avatar>
-          </Grid>
-          <Grid pt={2}>
-            <form method="post" onSubmit={submitUser}>
-              <input
-                accept="image/*"
-                id="icon-button-file"
-                type="file"
-                style={{ display: "none" }}
-                onChange={(e) => handlePicture(e)}
-              />
-              <label htmlFor="icon-button-file">
-                <IconButton
-                  color="#007464"
-                  aria-label="upload picture"
-                  component="span"
-                >
-                  <PhotoCamera />
-                </IconButton>
-              </label>
+            <form action="" onSubmit={submitUser}>
+                <div onClick={handleClick}>
+                  <input
+                    ref={ref}
+                    type="file"
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: 'none' }}
+                    id="selected-image"
+                    onChange={(e) => setSelectedImage(e.target.files[0])}
+                  />
+                  <label htmlFor="icon-button-file">
+                    <IconButton
+                      color="#007464"
+                      aria-label="upload picture"
+                      component="span"
+                    >
+                      <PhotoCamera />
+                    </IconButton>
+                  </label>
+                </div>
             </form>
           </Grid>
         </Grid>
         <Box flexDirection="column">
-          {/* {message ? (
-              <div className="text-success text-white">
-                {" "}
-                <h5>{message} </h5>
-              </div>
-            ) : (
-              <></>
-            )} */}
           <form method="post" style={styles.positionForm} onSubmit={submitUser}>
             <TextField
-              required
               id="name"
               name="name"
               placeholder="Name"
-              onChange={(e) => handleusername(e)}
+              onChange={(e)=> setUser(e.target.value)}
               sx={{
                 backgroundColor: "#E4E4EC",
                 mb: "20px",
@@ -156,7 +156,7 @@ export default function SettingProfile() {
               type="Facebook"
               name="facebook"
               placeholder="Facebook"
-              onChange={(e) => handleFacebook(e)}
+              onChange={(e)=> setUser(e.target.value)}
               sx={{
                 backgroundColor: "#E4E4EC",
                 mb: "20px",
@@ -167,26 +167,10 @@ export default function SettingProfile() {
               }}
             ></TextField>
             <TextField
-              required
               id="ig"
               name="instagram"
               placeholder="Instagram"
-              onChange={(e) => handleInsta(e)}
-              sx={{
-                backgroundColor: "#E4E4EC",
-                mb: "20px",
-                width: { sm: 300, md: 300, xs: 300, lg: 400 },
-                "& .MuiInputBase-root": {
-                  height: 40,
-                },
-              }}
-            ></TextField>
-            <TextField
-              required
-              id="tw"
-              name="twitter"
-              placeholder="Twitter"
-              onChange={(e) => handleTwitter(e)}
+              onChange={(e)=> setUser(e.target.value)}
               sx={{
                 backgroundColor: "#E4E4EC",
                 mb: "20px",
@@ -203,61 +187,3 @@ export default function SettingProfile() {
     </>
   );
 }
-
-/*
-                <form style={styles.positionForm} >
-                    <TextField
-                        required
-                        id="name"
-                        placeholder='Maria Lozo'
-                        sx={{backgroundColor:"#E4E4EC",
-                        mb:"20px",
-                        width:{ sm: 300, md: 300, xs:300, lg:300 },
-                        "& .MuiInputBase-root": {
-                            height: 40
-                        } }}
-                        >
-                    </TextField>
-                    <TextField
-                        required
-                        id="boutique"
-                        placeholder="Maria couture"
-                        sx={{backgroundColor:"#E4E4EC",
-                        mb:"20px",
-                        width: { sm: 300, md: 300, xs:300, lg:300 },
-                        "& .MuiInputBase-root": {
-                            height: 40
-                        }}}
-                        >
-                    </TextField>
-                    <TextField
-                        required
-                        id="password"
-                        type="password"
-                        placeholder='Mot de passe'
-                        sx={{backgroundColor:"#E4E4EC",
-                        mb:"20px",
-                        width:{ sm: 300, md: 300, xs:300, lg:300 },
-                        "& .MuiInputBase-root": {
-                            height: 40
-                        }}}
-                        >
-                    </TextField>
-                    <Button 
-                    alignItems="center"
-                    variant="contained" 
-                    type="submit"
-                    sx={{
-                    backgroundColor: "#D2282D",
-                    color : "#fff",
-                    borderRadius:"10px",
-                    '&:hover':{
-                    backgroundColor:"#fff",
-                    color:"#D2282D"
-                    }}}
-                    >
-                        Envoyer
-                    </Button>
-                </form>
-
-} */

@@ -33,21 +33,21 @@ const UserImage = () => {
     setAnchorEl(null);
   };
 
-  let userImg = window.localStorage.getItem("image");
+  let userImg = window.localStorage.getItem("userImage");
 
   const getUser = () => {
     authAxios().then(async (axios) => {
       const user = await axios.get(`/user`);
       console.log(user);
-      localStorage.setItem("name", user.data.name);
-      localStorage.setItem("image", user.data.picture);
+      localStorage.setItem("userName", user.data.userName);
+      localStorage.setItem("userImage", user.data.picture);
     });
   };
 
   useEffect(() => {
     getUser();
   }, []);
-  const name = localStorage.getItem("name");
+  const name = localStorage.getItem("userName");
 
   return (
     <>

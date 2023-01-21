@@ -4,9 +4,7 @@ const { verifyToken } = require("../middlewares");
 
 const {
   createUser,
-  updateUserUsername,
   findUser,
-  updateUserPicture,
   updateUser,
 } = require("../controllers/user.controller");
 

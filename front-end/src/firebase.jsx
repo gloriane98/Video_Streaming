@@ -18,9 +18,10 @@ provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
 
 export const signInWithGoogle = async () => {
   const response = await auth.signInWithPopup(provider);
-
+  console.log(response.additionalUserInfo.profile.picture)
   if (response) {
     window.location.href = "/home";
+    // localStorage.setItem('userImage',response.additionalUserInfo.profile.picture)
     localStorage.setItem("token", response.credential.accessToken);
   }
 };

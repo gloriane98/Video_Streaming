@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import { HashLink } from "react-router-hash-link";
 import axios from "axios";
-import BoxComments from "../../BoxComments/CommentForm";
+import Comments from '../Comments/Comments'
 import PageError from "../PageError";
 
 const Videoview = ({socket}) => {
@@ -45,7 +45,10 @@ const Videoview = ({socket}) => {
           <IframeVideo videoId={videoId} />
         </div>
         <div className="comment">
-          <BoxComments socket={socket}/>
+          <Comments 
+           currentUserId={localStorage.getItem('userId')}
+           videoId={videoId}
+          />
         </div>
         <div className="ListeVideo">
           {video.items?.map((video) => {

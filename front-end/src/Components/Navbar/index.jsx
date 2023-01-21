@@ -7,7 +7,7 @@ import Logout from "../Logout";
 import { useContext } from "react";
 import { UserContext } from "../../ContextAccount";
 import UserImage from "../UserImage";
-import Notify from "../Notify";
+import Notify from "../Notify/Notification";
 
 const Navbar = () => {
   let { loginState } = useContext(UserContext);

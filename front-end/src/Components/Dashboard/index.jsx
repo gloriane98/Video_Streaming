@@ -14,6 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     authAxios().then(async (axios) => {
       const res = await axios.get("/user");
+      localStorage.setItem("userId",res.data._id)
       // console.log(res)
     }).catch(err=> console.log(err));
   }, []);

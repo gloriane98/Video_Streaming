@@ -14,8 +14,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import AppCenter from "./Components/AppCenter";
 import VideoPop from "./Components/VideoPop";
 import SettingProfile from "./Components/SettingProfile";
-import socketIO from 'socket.io-client';
-const socket = socketIO.connect(`http://localhost:9000`);
+
 
 
 export default function App() {
@@ -95,7 +94,7 @@ export default function App() {
               element={
                 <>
                   <Dashboard />
-                  <Videoview socket={socket}/>
+                  <Videoview/>
                 </>
               }
             />

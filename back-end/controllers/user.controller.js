@@ -1,10 +1,10 @@
 const User = require("../models/user");
 
 const createUser = (req, res, next) => {
-  const { uid, name, picture } = res.locals;
+  const { uid, userName, picture } = res.locals;
   const user = new User({
     uid,
-    name,
+    userName,
     picture,
     ...req.body,
   });
@@ -29,20 +29,37 @@ const findUser = (req, res, next) => {
     .catch((error) => res.status(404).json({ error }));
 };
 
-const updateUser = async (req, res) => {
-  const _id = req.params.id;
-  const { name, picture, facebook, instagram, twitter } = req.body;
+const updateUser = (req, res) => {
+  /* const user = new User({
+    _id: req.params.id,
+    userName: req.body.userName,
+    picture: req.body.picture,
+    facebook: req.body.facebook,
+    instagram: req.body.instagram,
+  });
+  User.updateOne({ _id: req.params.id }, user)
+    .then(() => {
+      res.status(201).json({
+        message: "User updated successfully",
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    }); */
+  const userId = req.params.id;
+  const { userName, picture, facebook, instagram } = req.body;
   if (!req.body) {
     return res.status(400).send({ message: "Data to update can not be empty" });
   }
   User.findOneAndUpdate(
-    _id,
+    userId,
     {
-      name: name,
+      userName: userName,
       picture: picture,
       facebook: facebook,
       instagram: instagram,
-      twitter: twitter,
     },
     { new: true, returnOriginal: false }
   )
